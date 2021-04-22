@@ -2,7 +2,9 @@
 title: "CV Daniël Roodzant"
 author: "Daniel Roodzant"
 date: "15-4-2021"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 # Personalia
