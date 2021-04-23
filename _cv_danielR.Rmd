@@ -1,0 +1,81 @@
+---
+title: "CV Daniël Roodzant"
+author: "Daniel Roodzant"
+date: "15-4-2021"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+# Personalia
+__Naam:__ Daniël Roodzant
+__Adres:__ Kapelstraat 21-C, 1211 LX te Hilversum
+__Telefoon:__ 06 57 77 88 38
+__Email:__ daniel.roodzant@hotmail.com
+
+__Geboortedatum en -plaats__
+16-09-1997, Dirksland
+
+__Nationaliteit__
+Nederlands
+
+# Persoonlijk profiel
+Ik ben een gedreven en leergierige biotechnologisch analist met ambitie voor data-science. Ik pak graag grote probleemstukken aan en houd ervan om mij te verdiepen in het ‘waarom’. Nieuwe dingen leren en mijn kennis en vaardigheden verbeteren vind ik erg belangrijk.
+
+# Vaardigheden
+- MS Office   4/5
+- Data-analyse in Bash en Perl    3/5
+- Programeertaal R, specifiek richting data science   2/5
+
+- Teamwork    4/5
+- Aanpassingsvermogen   4/5
+- Leiderschap   4/5
+
+# Talen
+- Nederlands    5/5
+- Engels    5/5
+- Duits   2/5
+
+# Onderwijs
+__B-Life Sciences, Hogeschool Utrecht__
+September 2018 – heden
+• Nog geen diploma behaald
+
+__Minor Data Sciences for Biology, Hogeschool Utrecht__
+Februari 2021 – heden
+• Leren werken met bash en coderen in R voor (big)dataverwerking
+
+__Biotechnologisch Analist niveau 4, ROC van Amsterdam__
+September 2015 – juli 2018
+• Cum laude diploma behaald
+• Opleiding één jaar verkort afgerond
+
+__Havo – Natuur en Gezondheid, Willem de Zwijger__
+College, Bussum
+September 2010 – juli 2015
+• Geen diploma behaald
+
+# Werkervaring
+__Verkoopmedewerker, Dierenwinkel Krans, Hilversum__
+Juli 2017 – heden
+• Specifiek klantenadvies verzorgen
+
+__Stagiair diagnostisch- en onderzoeksanalist op afdeling endocrinologie, Universitaire Medische Centra, Amsterdam__
+Maart 2017 – juni 2018
+• GCMS
+• Patiënten-monsters hanteren
+
+__Verkoopmedewerker, Lidl supermarkt, Hilversum__
+Februari 2016 – november 2017
+
+__Vakkenvuller, Albert Heijn supermarkt, Laren__
+2013 – december 2015
+
+# Hobby's en interesses
+- Lezen van non-fictie boeken
+- Drummen in mijn vrije tijd
+- Sporten in de sportschool
+- Leren beleggen
+
+# Referenties
+Op aanvraag
