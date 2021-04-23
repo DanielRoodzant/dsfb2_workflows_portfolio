@@ -1,7 +1,7 @@
 ---
-title: "workflows_portfolio"
-author: "Daniel Roodzant"
-date: "12-4-2021"
+title: "Portfolio assignment 1"
+author: "Daniël Roodzant"
+date: "23-4-2021"
 output: html_document
 ---
 
@@ -11,7 +11,7 @@ library(tidyverse)
 library(readxl) 
 library(lubridate)
 ```
-# {.tabset}
+
 ## 1.1 {.tabset}
 ### Assignment 
 __C. elegans plate experiment__
@@ -255,14 +255,3 @@ Code:
 ##################################
 Errors: Adjusted data location and loaded library lubridate.
 It took very low effort (4/5) to reproduce the code.
-
-## 2 {.tabset}
-### Assignment
-Applying the Guerrilla analytics framework to your own project.
-
-Look at your RStudio project that you created for the DAUR-II final assignment
-Rearrange your project according the Guerilla principles explained above
-Add README files to the datasets
-Use the {fs} package to share a screenshot of your folder tree in your portfolio, look at: for more info on how to use the {fs} package.
-Now clean up your work environment for this course (workflows) and the parallel course in DSFB2 (projecticum). Set up a folder structure that will accomodate future plans and collaboration on the projecticum. Provide readme-files or comments within the code where needed.
-For the projecticum folder, make sure you do this together with your lab partner.
