@@ -1,0 +1,26 @@
+---
+title: "007_portfolio_assignment_7"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(dplyr)
+library(dslabs)
+```
+
+```{r 7.1}
+flu_data <- read.csv('data/flu_data.csv', skip = 11)
+dengue_data <- read.csv("data/dengue_data.csv", skip = 11)
+gapminder <- dslabs::gapminder
+```
+
+```{r 7.2}
+flu_data <- flu_data %>% tidyr::pivot_longer(cols = Argentina:Uruguay,
+                      names_to = "country", 
+                      values_to = "value")
+dengue_data <- dengue_data %>% tidyr::pivot_longer(cols = Argentina:Venezuela,
+                      names_to = "country", 
+                      values_to = "value")
+```
