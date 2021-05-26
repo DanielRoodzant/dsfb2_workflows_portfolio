@@ -25,7 +25,7 @@ Vaardigheden {#skills}
 <p style="text-align: right;">
 MS Office <i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="far fa-circle"></i></p>
 <p style="text-align: right;">
-Bash, Perl, R    <i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="far fa-circle"></i><i class="far fa-circle"></i></p><br>
+Bash, Perl, R, R-Shiny    <i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="far fa-circle"></i><i class="far fa-circle"></i></p><br>
 <p style="text-align: right;">
 Teamwork    <i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="far fa-circle"></i></p>
 <p style="text-align: right;">
