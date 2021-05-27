@@ -1,14 +1,4 @@
----
-title: "007_portfolio_assignment_7"
-output: html_document
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-library(tidyverse)
-library(dplyr)
-library(dslabs)
-```
+# Portfolio assignment 7 {.tabset .unnumbered}
 
 ```{r 7.1}
 flu_data <- read.csv('data/flu_data.csv', skip = 11)

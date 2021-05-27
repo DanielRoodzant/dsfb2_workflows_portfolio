@@ -1,29 +1,15 @@
----
-title: "Portfolio assignment 2"
-author: "Daniël Roodzant"
-date: "23-4-2021"
-output: html_document
----
-
-```{r, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-library(tidyverse)
-library(readxl) 
-library(lubridate)
-library(fs)
-```
-
 # Portfolio assignment 2 {.tabset .unnumbered}
 ## Assignment {.unnumbered}
 Applying the Guerrilla analytics framework to your own project.
 
-__A__
-1. Look at your RStudio project that you created for the DAUR-II final assignment
-2. Rearrange your project according the Guerilla principles explained above
-3. Add README files to the datasets
+__A__ <br>
+1. Look at your RStudio project that you created for the DAUR-II final assignment <br>
+2. Rearrange your project according the Guerilla principles explained above <br>
+3. Add README files to the datasets <br>
 4. Use the {fs} package to share a screenshot of your folder tree in your portfolio, look at: for more info on how to use the {fs} package.
 
 ```{r, echo=FALSE}
+# Create a tree containing data structure GitHub repo
 dir_tree(path = ".")
 ```
 

@@ -1,20 +1,8 @@
----
-title: "Untitled"
-output: html_document
----
-
 # Portfolio assignment 1.2{.tabset .unnumbered}
 ## Assignment {.unnumbered}
 Open Peer Review
 
 This exercise is about identifying reproducibility issues in a scientific publication. We use the criteria for reproduciblity that are publically available via here
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-library(tidyverse)
-library(readxl) 
-library(lubridate)
-```
 
 ```{r read criteria table, echo=FALSE}
 knitr::kable(read_excel("data/data_raw/reproducibility_criteria.xlsx"), 
@@ -28,15 +16,15 @@ In this assisgment you need to find a scientific article yourself, using PubMed 
 
 To guide your search you can choose between these topics
 
-“Coronavirus / COVID-19”
-“The effects of compound on an organism / Toxicology”
-“The effectiveness of a drug or treatment in an animal study”
+“Coronavirus / COVID-19”<br>
+“The effects of compound on an organism / Toxicology”<br>
+“The effectiveness of a drug or treatment in an animal study”<br>
 “The effects of a compound investigated in a cell or organoid system”
-TIPS
 
-If you do not know where to start your literature search start here: https://www.biorxiv.org/
-This assignment is not about the topic you select, so try to do that quickly
-You may want to cheat and select an article that scores TRUE on the Data Availability Statement, because that enables you to use the this article again in one of the next assignments.
+TIPS<br>
+If you do not know where to start your literature search start here: https://www.biorxiv.org/ <br>
+This assignment is not about the topic you select, so try to do that quickly <br>
+You may want to cheat and select an article that scores TRUE on the Data Availability Statement, because that enables you to use the this article again in one of the next assignments. 
 
 PART 1 To complete part 1, execute activity A to G
 
@@ -77,23 +65,23 @@ __P.__ Generate an RMarkdown script that contains the details on the project you
 resource: https://www.researchgate.net/publication/340244621_Reproducibility_and_reporting_practices_in_COVID-19_preprint_manuscripts/fulltext/5e81f9fd92851caef4ae37ba/Reproducibility-and-reporting-practices-in-COVID-19-preprint-manuscripts.pdf
 
 ## Part 1, A-G {.unnumbered}
-Article:
+Article: <br>
 Yamayoshi S, Sakai-Tagawa Y, Koga M, et al. Comparison of Rapid Antigen Tests for COVID-19. Viruses. 2020;12(12):1420. Published 2020 Dec 10. doi:10.3390/v12121420
 
-Study purpose   -   Present
-Data availability statement   -   Not present
-Data location   -   Present
-Study location    -   Present
-Author review   -   Not present
-Ethics statement    -   Present
-Funding statement   -   Present
+Study purpose   -   Present <br>
+Data availability statement   -   Not present <br>
+Data location   -   Present <br>
+Study location    -   Present <br>
+Author review   -   Not present <br>
+Ethics statement    -   Present <br>
+Funding statement   -   Present <br>
 Code availability   -   Not present
 
 In the study rapid antigen tests (RAT) for covid-19 are tested on corona positive patients to compare their effectivity to the PCR method. To do this patient material such as saliva and nose/throat swabs were used with four types of RATs and the standard PCR test. The RATs were also tested using 2 isolated virus strands. The RATs were less sensitive than the PCR test. Some of the RATs are not able to detect low quantities of virusparticles. There is no big difference between the isolated virus and the clinical samples. 
 Data is available onine at: https://www.mdpi.com/1999-4915/12/12/1420/s1
 
 ## Part 2, H-P {.unnumbered}
-project: 
+project: <br>
 Bats and COVID-19 - https://osf.io/wxh6a/
 
 The code intends to compare the searchwords 'coronavirus' and 'bats' through google and wikipedia in multiple countries.
@@ -101,7 +89,9 @@ The code intends to compare the searchwords 'coronavirus' and 'bats' through goo
 Readability is a 4/5.
 
 See bats_and_covid.R for the code and to run it.
+
 Code:
+``` {r bats_and_covid.R code, eval=FALSE}
 ######################
 ###Fig.1 (2016-2020 US Tv news about bats) {.unnumbered}
 {
@@ -124,6 +114,7 @@ Code:
     theme(strip.text = element_text(colour = "black", size=14, face="bold"))
 }
 ##################################
+``` 
 
 Errors: Adjusted data location and loaded library lubridate.
 

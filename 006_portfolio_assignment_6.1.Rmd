@@ -1,12 +1,3 @@
----
-title: "Untitled"
-output: html_document
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 # Portfolio assignment 6.1 {.tabset .unnumbered}
 ## Assignment {.unnumbered}
 github pages
@@ -14,10 +5,11 @@ github pages
 Execute the steps explained here (click) to setup a github-pages repository called myname-portfolio or something similar.
 Once you have successfully rendered your bookdown to a full website, hosting can be achieved by copying all html files to your Github-pages. The easiest way is to:
 
-clone your github pages repo
-copy all the html files rendered with bookdown to this folder
-commit and push all changes to your github pages repo. The website will be automatically updated after some time.
+1. clone your github pages repo <br>
+2. copy all the html files rendered with bookdown to this folder<br>
+3. commit and push all changes to your github pages repo. The website will be automatically updated after some time.<br>
+
 You can also setup a theme for your github pages. See here for more info, but you have learned to use css, so this is a nice opportunity to display that.
 
-Put your portfolio on your github pages
-Send the url to your public portfolio address on the “prikbord” channel.
+- Put your portfolio on your github pages<br>
+- Send the url to your public portfolio address on the “prikbord” channel.

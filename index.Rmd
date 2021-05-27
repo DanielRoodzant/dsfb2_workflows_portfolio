@@ -1,8 +1,8 @@
 ---
 title: "R portfolio Daniël Roodzant"
 author: "Daniël Roodzant"
+date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
-documentclass: book
 new_session: yes
 output:
   bookdown::gitbook:
@@ -15,4 +15,16 @@ output:
   #bookdown::pdf_book: default
 ---
 
-My bookdown
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(readxl) 
+library(lubridate)
+library(fs)
+library(dplyr)
+library(dslabs)
+library(here)
+library(htmltools)
+```
+
+#Index
