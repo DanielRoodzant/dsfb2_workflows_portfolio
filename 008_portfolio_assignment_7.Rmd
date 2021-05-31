@@ -1,4 +1,4 @@
-Portfolio assignment 7 {.tabset .unnumbered}
+Portfolio assignment 7 {.unnumbered}
 ================================================================================
 Assignment {.unnumbered}
 --------------------------------------------------------------------------------
