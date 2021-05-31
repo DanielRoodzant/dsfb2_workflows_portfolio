@@ -27,4 +27,3 @@ library(here)
 library(htmltools)
 ```
 
-#Index

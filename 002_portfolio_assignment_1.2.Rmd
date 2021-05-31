@@ -1,5 +1,7 @@
-# Portfolio assignment 1.2{.tabset .unnumbered}
-## Assignment {.unnumbered}
+Portfolio assignment 1.2{.unnumbered}
+================================================================================
+Assignment {.unnumbered}
+--------------------------------------------------------------------------------
 Open Peer Review
 
 This exercise is about identifying reproducibility issues in a scientific publication. We use the criteria for reproduciblity that are publically available via here
@@ -10,7 +12,7 @@ knitr::kable(read_excel("data/data_raw/reproducibility_criteria.xlsx"),
              caption = "Reproducibility criteria"
              )
 ```
-_Table clarification_ The Transparency Criteria are criteria you need to score the article of your choice for. Read them carefully and discuss with another course participant if you do not understand them. Each Tranparance criterion comes with a Definition that explains the criterion in more details. These descriptions are particularly helpful to understand what the criterium entails and what to look for in the article. The Response Type is the actual score
+__Table clarification__ The Transparency Criteria are criteria you need to score the article of your choice for. Read them carefully and discuss with another course participant if you do not understand them. Each Tranparance criterion comes with a Definition that explains the criterion in more details. These descriptions are particularly helpful to understand what the criterium entails and what to look for in the article. The Response Type is the actual score
 
 In this assisgment you need to find a scientific article yourself, using PubMed or another database or repository. Use only Open Access articles. Having an article in hand, go over the table above and score the article according the criteria. Be sure to select a primary article that presents a study using data from experimental work . This can be laboratory experiments or in silico experiments. Reviews and meta analysis are not suitable for this assignment
 
@@ -64,7 +66,8 @@ __P.__ Generate an RMarkdown script that contains the details on the project you
 
 resource: https://www.researchgate.net/publication/340244621_Reproducibility_and_reporting_practices_in_COVID-19_preprint_manuscripts/fulltext/5e81f9fd92851caef4ae37ba/Reproducibility-and-reporting-practices-in-COVID-19-preprint-manuscripts.pdf
 
-## Part 1, A-G {.unnumbered}
+Part 1, A-G {.unnumbered}
+--------------------------------------------------------------------------------
 Article: <br>
 Yamayoshi S, Sakai-Tagawa Y, Koga M, et al. Comparison of Rapid Antigen Tests for COVID-19. Viruses. 2020;12(12):1420. Published 2020 Dec 10. doi:10.3390/v12121420
 
@@ -80,7 +83,8 @@ Code availability   -   Not present
 In the study rapid antigen tests (RAT) for covid-19 are tested on corona positive patients to compare their effectivity to the PCR method. To do this patient material such as saliva and nose/throat swabs were used with four types of RATs and the standard PCR test. The RATs were also tested using 2 isolated virus strands. The RATs were less sensitive than the PCR test. Some of the RATs are not able to detect low quantities of virusparticles. There is no big difference between the isolated virus and the clinical samples. 
 Data is available onine at: https://www.mdpi.com/1999-4915/12/12/1420/s1
 
-## Part 2, H-P {.unnumbered}
+Part 2, H-P {.unnumbered}
+--------------------------------------------------------------------------------
 project: <br>
 Bats and COVID-19 - https://osf.io/wxh6a/
 

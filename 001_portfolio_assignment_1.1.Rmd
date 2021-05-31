@@ -1,5 +1,7 @@
-# Portfolio assignment 1.1 {.tabset .unnumbered}
-## Assignment {.unnumbered}
+Portfolio assignment 1.1 {.unnumbered}
+================================================================================
+Assignment {.unnumbered}
+--------------------------------------------------------------------------------
 __C. elegans plate experiment__
 
 (Again: work out this exercise in a Rmarkdown file in your portfolio-project. You will need this later to put in your portfolio)
@@ -28,23 +30,26 @@ __J.__ Normalize the data for the controlNegative in such a way that the mean va
 
 __K.__ Why would you want to take the step under J?
 
-## A {.unnumbered}
-__Q:__ Review the following Excel file in the ./data/CE.LIQ.FLOW.062_Tidydata.xlsx (it’s here), by opening the file in Excel. See if you can spot anything peculiar about this file. Do not edit the file in any way. Just close it when you are done. (Annoyingly, Excel asks you to save your changes, even if you did not touch anything in the file: why is this cumbersome?)
+Answers {.unnumbered}
+--------------------------------------------------------------------------------
+__A__ <br>
+_Q:_ Review the following Excel file in the ./data/CE.LIQ.FLOW.062_Tidydata.xlsx (it’s here), by opening the file in Excel. See if you can spot anything peculiar about this file. Do not edit the file in any way. Just close it when you are done. (Annoyingly, Excel asks you to save your changes, even if you did not touch anything in the file: why is this cumbersome?)
 
-__A:__ Someone put a lot of care into the make-up of the sheet and it's still difficult to read.
+_A:_ Someone put a lot of care into the make-up of the sheet and it's still difficult to read.
 
-## B {.unnumbered}
+__B__<br>
 Open the file in R, using the {readxl} package.
 
 ```{r 1.1.b, message = FALSE, warning = FALSE}
 knitr::kable(read_excel('data/data_raw/CE.LIQ.FLOW.062_Tidydata.xlsx') %>% head(10))
 ```
-## C {.unnumbered}
-__Q:__ Inspect the data types of columns RawData, compName and compConcentration. What types would you expect from the experimental description above. Have the data types been correctly assigned during the importing of the data into R?
 
-__A:__ You would expect compConcentration to be dbl but it's in chr so it was imported incorrectly.
+__C__ <br>
+_Q:_ Inspect the data types of columns RawData, compName and compConcentration. What types would you expect from the experimental description above. Have the data types been correctly assigned during the importing of the data into R?
 
-## D {.unnumbered}
+_A:_ You would expect compConcentration to be dbl but it's in chr so it was imported incorrectly.
+
+__D__ <br>
 Create a graph displaying a scatterplot for the CE.LIQ.FLOW.062_Tidydata.xlsx data, for the different compounds and the varying concentrations. Put the compConcentration on the x-axis, the DataRaw counts on the y-axis and assign a colour to each level in compName. Assign a different symbol (shape =) to each level in the expType variable. Try fixing the labels of the x-axis so that we can read them.
 
 ```{r 1.1.d, message = FALSE, warning = FALSE}
@@ -59,8 +64,8 @@ scatter_FLOW.062 %>% ggplot(aes(x = compConcentration, y = RawData)) +
        caption = "Data supplied by J. Louter (INT/ILC)") 
 ```
 
-## E {.unnumbered}
-__Q:__ When creating the plot under D), what happened with the ordering of the x-axis labels. Explain why this happens. Look at the data-type of the compConcentration column in the data again to find a clue.
+__E__<br>
+_Q:_ When creating the plot under D), what happened with the ordering of the x-axis labels. Explain why this happens. Look at the data-type of the compConcentration column in the data again to find a clue.
 
 ```{r 1.1.e, message = FALSE, warning = FALSE}
 # Show example of the wrong graph gotten from .xlsx format by retrieving data and plotting it
@@ -72,9 +77,9 @@ wrong_scatter_FLOW.062 %>% ggplot(aes(x = compConcentration, y = RawData)) +
        caption = "Data supplied by J. Louter (INT/ILC)") 
 ```
 
-__A:__ Every concentration is seen as a separate point because the column has the 'chr' type.
+_A:_ Every concentration is seen as a separate point because the column has the 'chr' type.
 
-## F {.unnumbered}
+__F__<br>
 Correct the data-type of compConcentration to numeric and than look at the graph again. Use a log10 transformation on the x-axis to get a clear graph. Also, add a bit of jitter to the points in the graph so that points are not overlapping.
 
 ```{r 1.1.f, message = FALSE, warning = FALSE}
@@ -91,19 +96,19 @@ scatter_FLOW.062 %>% ggplot(aes(x = compConcentration, y = RawData)) +
        caption = "Data supplied by J. Louter (INT/ILC)") 
 ```
 
-## G & H {.unnumbered}
-Fill in: (G) The positive control for this experiments is __naphtalene__ (H) The negative control for this experiment is __S-medium__
+__G & H__<br>
+Fill in: (G) The positive control for this experiments is _naphtalene_ (H) The negative control for this experiment is _S-medium_
 
-## I {.unnumbered}
-__Q:__ Think about how you would analyze this experiment to learn whether there is indeed an effect of different concentrations on offspring count and whether the different compounds have a different curve (IC50). Write down you analysis as a step-wise plan.
+__I__ <br>
+_Q:_ Think about how you would analyze this experiment to learn whether there is indeed an effect of different concentrations on offspring count and whether the different compounds have a different curve (IC50). Write down you analysis as a step-wise plan.
 
-__A:__ 
+_A:_ 
 - Group the data for every compound. 
 - Check if the data is normally distributed.
 - Use the apropriate statistical tests on the data to see if there is a statistically significant effect of different concentrations on the offspring count.
 - Calculate the IC50 and make a curve.
 
-## J {.unnumbered}
+__J__<br>
 Normalize the data for the controlNegative in such a way that the mean value for controlNegative is exactly equal to 1 and that all other values are expressed as a fraction thereof. Rerun your graphs with the normalized data.
 
 ```{r 1.1.j, message = FALSE, warning = FALSE}
@@ -132,7 +137,7 @@ mean_normalized_FLOW.062 %>% ggplot(aes(x = compConcentration, y = mean_RawData_
        caption = "Data supplied by J. Louter (INT/ILC)") 
 ```
 
-## K {.unnumbered}
-__Q:__ Why would you want to take the step under J?
+__K__<br>
+_Q:_ Why would you want to take the step under J?
 
-__A:__ To get the result in relation to the '0 value' which makes it easier to compare the samples to the "normal" value. 
+_A:_ To get the result in relation to the '0 value' which makes it easier to compare the samples to the "normal" value. 

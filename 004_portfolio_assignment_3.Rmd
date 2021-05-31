@@ -1,5 +1,7 @@
-# Portfolio assignment 3 {.tabset .unnumbered}
-## Assignment {.unnumbered}
+Portfolio assignment 3 {.unnumbered}
+================================================================================
+Assignment {.unnumbered}
+--------------------------------------------------------------------------------
 Start your portfolio with a CV
 
 __A__ <br>
@@ -10,6 +12,6 @@ __B__ <br>
 Now start building your CV in a new Rmarkdown file and keep using github for version control. Remember to commit often, and push your changes! Build something that you would want to send to a possible future bioinformatics internship position, or when job hunting. So it needs to be complete and professional looking. <br>
 You can look around online for examples of cv’s (/resume). Your cv will be part of your portfolio.
 
-## CV {.unnumbered}
-
+CV {.unnumbered}
+--------------------------------------------------------------------------------
 [My CV](./data/_CV_Daniël_Roodzant.pdf)

@@ -1,6 +1,7 @@
-# Portfolio assignment 5 {.tabset .unnumbered}
-## Assignment {.unnumbered}
-
+Portfolio assignment 5 {.unnumbered}
+================================================================================
+Assignment {.unnumbered}
+--------------------------------------------------------------------------------
 __A__ <br>
 Make sure you have:<br>
 1. Two personal repositories on github: one for your portfolio, one for the regular exercises.<br>
@@ -19,6 +20,7 @@ __B__<br>
 6. Find out how you can add websites as reference to Mendeley.<br>
 7. Write (so not “copy!”) at least 500 words of introduction for your projecticum project and use at least 5 references.
 
-## Projecticum introduction {.unnumbered}
+Projecticum introduction {.unnumbered}
+--------------------------------------------------------------------------------
 
 [View here](./data/_introduction.html)

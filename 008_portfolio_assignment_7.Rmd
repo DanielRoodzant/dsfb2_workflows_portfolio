@@ -1,5 +1,7 @@
-# Portfolio assignment 7 {.tabset .unnumbered}
-## Assignment {.unnumbered}
+Portfolio assignment 7 {.tabset .unnumbered}
+================================================================================
+Assignment {.unnumbered}
+--------------------------------------------------------------------------------
 relational databases
 
 TIPS

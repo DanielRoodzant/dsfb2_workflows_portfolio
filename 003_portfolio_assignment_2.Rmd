@@ -1,5 +1,7 @@
-# Portfolio assignment 2 {.tabset .unnumbered}
-## Assignment {.unnumbered}
+Portfolio assignment 2 {.unnumbered}
+================================================================================
+Assignment {.unnumbered}
+--------------------------------------------------------------------------------
 Applying the Guerrilla analytics framework to your own project.
 
 __A__ <br>
@@ -13,7 +15,7 @@ __A__ <br>
 dir_tree(path = ".")
 ```
 
-__B__
+__B__<br>
 Now clean up your work environment for this course (workflows) and the parallel course in DSFB2 (projecticum). Set up a folder structure that will accomodate future plans and collaboration on the projecticum. Provide readme-files or comments within the code where needed.
 
 For the projecticum folder, make sure you do this together with your lab partner.

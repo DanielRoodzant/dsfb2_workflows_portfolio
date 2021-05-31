@@ -1,5 +1,7 @@
-# Portfolio assignment 6.1 {.tabset .unnumbered}
-## Assignment {.unnumbered}
+Portfolio assignment 6.1 {.unnumbered}
+================================================================================
+Assignment {.unnumbered}
+--------------------------------------------------------------------------------
 github pages
 
 Execute the steps explained here (click) to setup a github-pages repository called myname-portfolio or something similar.
