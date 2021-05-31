@@ -1,0 +1,22 @@
+# Portfolio assignment 6.2 {.tabset .unnumbered}
+## Assignment {.unnumbered}
+looking ahead
+
+In class, we discussed this assignment yesterday. In the following weeks, start looking for what you will want to spend your extra time on this semester.
+
+Try, for yourself, to answer the following questions:
+
+- Where do I want to be in ~2 years time?<br>
+- How am I doing now with respect to this goal?<br>
+- What would be the next skill to learn?<br>
+
+Make a planning on how to start learning this new skill.<br>
+
+Note the following points:
+
+- It has to be life sciences or useful for life sciences (no knitting, riding horses etc)<br>
+- It has to be data science / bioinformatics<br>
+- You have to show your plan in your portfolio, together with the result of the first few steps you took in trying to rech this goal.<br>
+- You probably won’t learn this skill in a few days. Just get started.<br>
+
+This assignment will show us whether you succeeded in reaching an overview of the field and possibilities in data science for biology.
