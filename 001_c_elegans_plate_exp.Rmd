@@ -12,12 +12,14 @@ We can see that someone put a lot of care into the make-up of the sheet and it i
 <br> <br>
 Now lets open the Excel file in R and render the first five rows.
 ```{r 1.1.b, message = FALSE, warning = FALSE}
+# Read the excel file into a vector and display it in a small table.
 scatter_FLOW.062 <- read_excel('data/data_raw/CE.LIQ.FLOW.062_Tidydata.xlsx') 
 knitr::kable( scatter_FLOW.062 %>% head(5))
 ```
 <br> <br> 
 And have a look at the data types.
 ```{r 1.1.c, message = FALSE, warning = FALSE}
+# Display the data type of select columns
 scatter_FLOW.062 %>% select(RawData, compName, compConcentration) %>% head(1)
 ```
 <br>
@@ -39,9 +41,10 @@ scatter_FLOW.062 %>% ggplot(aes(x = compConcentration, y = RawData)) +
 <br> <br>
 If I would not have changed the data type of the compConcentration column this would have happened:
 ```{r 1.1.e, message = FALSE, warning = FALSE}
-# Show example of the wrong graph gotten from .xlsx format by retrieving data and plotting it
+# Show example of the wrong graph from unedited .xlsx format by retrieving data
 wrong_scatter_FLOW.062 <- read_excel('data/data_raw/CE.LIQ.FLOW.062_Tidydata.xlsx')
 
+# Plotting data using ggplot
 wrong_scatter_FLOW.062 %>% ggplot(aes(x = compConcentration, y = RawData)) + 
   geom_point(aes(colour = compName, shape = expType)) + 
   labs(title = "Compound RawData per compound concentration",

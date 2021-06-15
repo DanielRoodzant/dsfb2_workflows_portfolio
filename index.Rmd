@@ -13,6 +13,8 @@ output:
         collapse: section
         scroll_highlights: yes
   #bookdown::pdf_book: default
+bibliography: data/data_raw/bibliography_pmc_proj.bib
+theme: jekyll-theme-cayman
 ---
 
 ```{r setup, include=FALSE}

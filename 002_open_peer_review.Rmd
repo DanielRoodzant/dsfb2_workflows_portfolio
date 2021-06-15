@@ -3,6 +3,7 @@ Open Peer Review {.unnumbered}
 This exercise is about identifying reproducibility issues in a scientific publication. We use the criteria for reproduciblity that are publicly available.
 <br> <br>
 ```{r read criteria table, echo=FALSE}
+#load table containing criteria
 knitr::kable(read_excel("data/data_raw/reproducibility_criteria.xlsx"), 
              align = 'c', 
              caption = "Reproducibility criteria"
@@ -38,6 +39,7 @@ Click [here](data/data_raw/bats_and_covid.R) to see the full code from the artic
 Now lets reproduce some of the code: 
 <br> <br>
 ``` {r bats_and_covid.R code, message = FALSE, warning = FALSE}
+### Display code chunk from bats_and_covid.R file.###
 # Fig.1 (2016-2020 US Tv news about bats) {.unnumbered}
 {
   tv.dat <- 
@@ -61,4 +63,4 @@ Now lets reproduce some of the code:
 ``` 
 <br>
 Errors: Adjusted data location and loaded library lubridate.
-It took very low effort (4/5) to reproduce the code.
+It took very low effort (4/5) to reproduce the code. Lack of pseudo coding makes the data somewhat more difficult to interpret. 

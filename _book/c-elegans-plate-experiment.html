@@ -24,7 +24,7 @@
 <meta name="author" content="Daniël Roodzant" />
 
 
-<meta name="date" content="2021-06-11" />
+<meta name="date" content="2021-06-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -120,6 +120,28 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 </head>
 
@@ -136,33 +158,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
 <li class="chapter" data-level="" data-path="c-elegans-plate-experiment.html"><a href="c-elegans-plate-experiment.html"><i class="fa fa-check"></i>C. elegans plate experiment</a></li>
 <li class="chapter" data-level="" data-path="open-peer-review.html"><a href="open-peer-review.html"><i class="fa fa-check"></i>Open Peer Review</a></li>
-<li class="chapter" data-level="" data-path="portfolio-assignment-2.html"><a href="portfolio-assignment-2.html"><i class="fa fa-check"></i>Portfolio assignment 2</a>
+<li class="chapter" data-level="" data-path="guerrilla-analytics-framework.html"><a href="guerrilla-analytics-framework.html"><i class="fa fa-check"></i>Guerrilla analytics framework</a></li>
+<li class="chapter" data-level="" data-path="projecticum-princes-maxima-center.html"><a href="projecticum-princes-maxima-center.html"><i class="fa fa-check"></i>Projecticum Princes Maxima Center</a>
 <ul>
-<li class="chapter" data-level="" data-path="portfolio-assignment-2.html"><a href="portfolio-assignment-2.html#assignment"><i class="fa fa-check"></i>Assignment</a></li>
+<li class="chapter" data-level="" data-path="projecticum-princes-maxima-center.html"><a href="projecticum-princes-maxima-center.html#references"><i class="fa fa-check"></i>References</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="portfolio-assignment-3.html"><a href="portfolio-assignment-3.html"><i class="fa fa-check"></i>Portfolio assignment 3</a>
-<ul>
-<li class="chapter" data-level="" data-path="portfolio-assignment-3.html"><a href="portfolio-assignment-3.html#assignment-1"><i class="fa fa-check"></i>Assignment</a></li>
-<li class="chapter" data-level="" data-path="portfolio-assignment-3.html"><a href="portfolio-assignment-3.html#cv"><i class="fa fa-check"></i>CV</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="portfolio-assignment-5.html"><a href="portfolio-assignment-5.html"><i class="fa fa-check"></i>Portfolio assignment 5</a>
-<ul>
-<li class="chapter" data-level="" data-path="portfolio-assignment-5.html"><a href="portfolio-assignment-5.html#assignment-2"><i class="fa fa-check"></i>Assignment</a></li>
-<li class="chapter" data-level="" data-path="portfolio-assignment-5.html"><a href="portfolio-assignment-5.html#projecticum-introduction"><i class="fa fa-check"></i>Projecticum introduction</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="portfolio-assignment-6-1.html"><a href="portfolio-assignment-6-1.html"><i class="fa fa-check"></i>Portfolio assignment 6.1</a>
-<ul>
-<li class="chapter" data-level="" data-path="portfolio-assignment-6-1.html"><a href="portfolio-assignment-6-1.html#assignment-3"><i class="fa fa-check"></i>Assignment</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="portfolio-assignment-6-2.html"><a href="portfolio-assignment-6-2.html"><i class="fa fa-check"></i>Portfolio assignment 6.2</a>
-<ul>
-<li class="chapter" data-level="" data-path="portfolio-assignment-6-2.html"><a href="portfolio-assignment-6-2.html#assignment-4"><i class="fa fa-check"></i>Assignment</a></li>
-<li class="chapter" data-level="" data-path="portfolio-assignment-6-2.html"><a href="portfolio-assignment-6-2.html#my-plan"><i class="fa fa-check"></i>My plan</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="portfolio-assignment-7.html"><a href="portfolio-assignment-7.html"><i class="fa fa-check"></i>Portfolio assignment 7</a>
-<ul>
-<li class="chapter" data-level="" data-path="portfolio-assignment-7.html"><a href="portfolio-assignment-7.html#assignment-5"><i class="fa fa-check"></i>Assignment</a></li>
-</ul></li>
+<li class="chapter" data-level="" data-path="looking-ahead.html"><a href="looking-ahead.html"><i class="fa fa-check"></i>Looking ahead</a></li>
+<li class="chapter" data-level="" data-path="relational-databases.html"><a href="relational-databases.html"><i class="fa fa-check"></i>Relational databases</a></li>
 </ul>
 
       </nav>
@@ -193,8 +195,9 @@ Lets have a look at the excel file containing the data.
 We can see that someone put a lot of care into the make-up of the sheet and it is still difficult to read.
 <br> <br>
 Now lets open the Excel file in R and render the first five rows.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="c-elegans-plate-experiment.html#cb1-1" aria-hidden="true" tabindex="-1"></a>scatter_FLOW<span class="fl">.062</span> <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&#39;data/data_raw/CE.LIQ.FLOW.062_Tidydata.xlsx&#39;</span>) </span>
-<span id="cb1-2"><a href="c-elegans-plate-experiment.html#cb1-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>( scatter_FLOW<span class="fl">.062</span> <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">5</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="c-elegans-plate-experiment.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the excel file into a vector and display it in a small table.</span></span>
+<span id="cb1-2"><a href="c-elegans-plate-experiment.html#cb1-2" aria-hidden="true" tabindex="-1"></a>scatter_FLOW<span class="fl">.062</span> <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&#39;data/data_raw/CE.LIQ.FLOW.062_Tidydata.xlsx&#39;</span>) </span>
+<span id="cb1-3"><a href="c-elegans-plate-experiment.html#cb1-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>( scatter_FLOW<span class="fl">.062</span> <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">5</span>))</span></code></pre></div>
 <table style="width:100%;">
 <colgroup>
 <col width="1%" />
@@ -455,7 +458,8 @@ Now lets open the Excel file in R and render the first five rows.</p>
 </table>
 <p><br> <br>
 And have a look at the data types.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="c-elegans-plate-experiment.html#cb2-1" aria-hidden="true" tabindex="-1"></a>scatter_FLOW<span class="fl">.062</span> <span class="sc">%&gt;%</span> <span class="fu">select</span>(RawData, compName, compConcentration) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="c-elegans-plate-experiment.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the data type of select columns</span></span>
+<span id="cb2-2"><a href="c-elegans-plate-experiment.html#cb2-2" aria-hidden="true" tabindex="-1"></a>scatter_FLOW<span class="fl">.062</span> <span class="sc">%&gt;%</span> <span class="fu">select</span>(RawData, compName, compConcentration) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 3
 ##   RawData compName                   compConcentration
 ##     &lt;dbl&gt; &lt;chr&gt;                      &lt;chr&gt;            
@@ -477,13 +481,14 @@ To do this I first fixed the compConcentration column by making it numeric, put 
 <p><img src="_main_files/figure-html/1.1.d-1.png" width="672" />
 <br> <br>
 If I would not have changed the data type of the compConcentration column this would have happened:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="c-elegans-plate-experiment.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show example of the wrong graph gotten from .xlsx format by retrieving data and plotting it</span></span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="c-elegans-plate-experiment.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show example of the wrong graph from unedited .xlsx format by retrieving data</span></span>
 <span id="cb5-2"><a href="c-elegans-plate-experiment.html#cb5-2" aria-hidden="true" tabindex="-1"></a>wrong_scatter_FLOW<span class="fl">.062</span> <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&#39;data/data_raw/CE.LIQ.FLOW.062_Tidydata.xlsx&#39;</span>)</span>
 <span id="cb5-3"><a href="c-elegans-plate-experiment.html#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="c-elegans-plate-experiment.html#cb5-4" aria-hidden="true" tabindex="-1"></a>wrong_scatter_FLOW<span class="fl">.062</span> <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> compConcentration, <span class="at">y =</span> RawData)) <span class="sc">+</span> </span>
-<span id="cb5-5"><a href="c-elegans-plate-experiment.html#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> compName, <span class="at">shape =</span> expType)) <span class="sc">+</span> </span>
-<span id="cb5-6"><a href="c-elegans-plate-experiment.html#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Compound RawData per compound concentration&quot;</span>,</span>
-<span id="cb5-7"><a href="c-elegans-plate-experiment.html#cb5-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&quot;Data supplied by J. Louter (INT/ILC)&quot;</span>) </span></code></pre></div>
+<span id="cb5-4"><a href="c-elegans-plate-experiment.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting data using ggplot</span></span>
+<span id="cb5-5"><a href="c-elegans-plate-experiment.html#cb5-5" aria-hidden="true" tabindex="-1"></a>wrong_scatter_FLOW<span class="fl">.062</span> <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> compConcentration, <span class="at">y =</span> RawData)) <span class="sc">+</span> </span>
+<span id="cb5-6"><a href="c-elegans-plate-experiment.html#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> compName, <span class="at">shape =</span> expType)) <span class="sc">+</span> </span>
+<span id="cb5-7"><a href="c-elegans-plate-experiment.html#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Compound RawData per compound concentration&quot;</span>,</span>
+<span id="cb5-8"><a href="c-elegans-plate-experiment.html#cb5-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&quot;Data supplied by J. Louter (INT/ILC)&quot;</span>) </span></code></pre></div>
 <p><img src="_main_files/figure-html/1.1.e-1.png" width="672" />
 <br>
 Every concentration is seen as a separate point because the column has the ‘chr’ type.

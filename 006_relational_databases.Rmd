@@ -1,9 +1,5 @@
-Portfolio assignment 7 {.unnumbered}
+Relational databases {.unnumbered}
 ================================================================================
-Assignment {.unnumbered}
---------------------------------------------------------------------------------
-relational databases
-
 TIPS
 
 - Be aware, the flu and dengue data contains metadata that should be stripped from the data on load.
