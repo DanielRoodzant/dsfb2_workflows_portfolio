@@ -1,0 +1,167 @@
+---
+title: "Daniël Roodzant's CV"
+author: Daniël Roodzant
+date: "`r Sys.Date()`"
+output: 
+  pagedown::html_resume:
+    # set it to true for a self-contained HTML page but it'll take longer to render
+    self_contained: FALSE
+# uncomment this line to produce HTML and PDF in RStudio:
+knit: pagedown::chrome_print
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+# Aside
+
+## Contact Info {#contact}
+
+-   <i class="fa fa-envelope"></i>
+    [daniel.roodzant\@hotmail.com](mailto:daniel.roodzant@hotmail.com){.email}
+-   <i class="fa fa-github"></i>
+    [github.com/DanielRoodzantHU](https://github.com/DanielRoodzantHU)
+-   <i class="fa fa-phone"></i> +31 6 577 788 38
+-   More info via email.
+
+## Skills {#skills}
+
+<p style="text-align: right;">
+MS Office
+<i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="far fa-circle"></i>
+</p>
+<p style="text-align: right;">
+Bash, Perl, R, Rshiny
+<i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="far fa-circle"></i><i class="far fa-circle"></i>
+</p>
+<p style="text-align: right;">
+Teamwork
+<i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="far fa-circle"></i>
+</p>
+<p style="text-align: right;">
+Adaptability
+<i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="far fa-circle"></i>
+</p>
+<p style="text-align: right;">
+Leadership
+<i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="far fa-circle"></i>
+</p>
+
+## Languages
+
+<p style="text-align: right;">
+Dutch
+<i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i>
+</p>
+<p style="text-align: right;">
+English
+<i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i>
+</p>
+<p style="text-align: right;">
+German
+<i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="far fa-circle"></i><i class="far fa-circle"></i><i class="far fa-circle"></i>
+</p>
+
+## Hobby's and interests
+
+<p style="text-align: right;">
+Reading non-fiction books <br>
+Drumming in my spare time <br>
+Going to the gym <br>
+Learning to invest
+</p>
+
+# Main
+
+## Daniël Roodzant {#title}
+
+### Personal profile
+
+I am a driven and eager biotechnological analyst with data-science ambitions. 
+I like taking on big issues and immersing myself in why things are as they are.
+Learning new things and improving my knowledge and skills is very important to me.
+
+## Education {data-icon="graduation-cap" data-concise="true"}
+
+### B-Life Sciences, Utrecht University of Applied Sciences
+
+Specialization Biomolecular Research
+
+Utrecht
+
+Present - sep 2018
+
+### Minor Data Sciences for Biology, Utrecht University of Applied Sciences
+
+Focus: (Big)Data processing using bash and coding in R.
+
+Utrecht
+
+jun 2021 - feb 2021
+
+-   Project from Princess Maxima Center in which we built an Rshiny app to easily fill in metadata for oncology screening.
+
+### Biotechnological Analist level 4 intermediate vocational education, Amsterdam regional education centre (ROC)
+
+Particularities: Graduated cum laude and finished one year earlier.
+
+Amsterdam
+
+jul 2018 - Sep 2015
+
+### Senior general secondary education (HAVO), Willem de Zwijger College Bussum
+
+Particularities: No diploma aqcuired
+
+Bussum
+
+jul 2015 - Sep 2010
+
+## Professional experience {data-icon="suitcase"}
+
+### Sales associate
+
+Dierenwinkel Krans - pet store
+
+Hilversum
+
+Present - Jul 2018
+
+::: {.concise}
+-   Advising customers
+-   Restocking/ handling cash register
+:::
+
+### Trainee diagnostic- and researchanalist, department endocrinology 
+
+University Medical Center
+
+Amsterdam
+
+jun 2018 - Mar 2017
+
+::: {.concise}
+-   GCMS
+-   Handling patient samples
+-   Running diagnostic determinations
+:::
+
+### Sales associate
+
+Lidl supermarkets
+
+Hilversum
+
+Nov 2017 - Feb 2016
+
+### Stock clerk
+
+Albert Heijn supermarkets
+
+Laren
+
+Dec 2015 - 2013
+
+<br> <br> This resume was made with the R package
+[**pagedown**](https://github.com/rstudio/pagedown). <br> Last updated
+on `r Sys.Date()`.
