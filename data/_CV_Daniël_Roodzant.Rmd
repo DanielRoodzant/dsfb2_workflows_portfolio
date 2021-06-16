@@ -31,7 +31,7 @@ MS Office
 <i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="far fa-circle"></i>
 </p>
 <p style="text-align: right;">
-Bash, Perl, R, R-Shiny
+Bash, Perl, R, Rshiny
 <i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="far fa-circle"></i><i class="far fa-circle"></i>
 </p>
 <p style="text-align: right;">
@@ -90,7 +90,7 @@ Specialitsatie Biomolecular Research
 
 Utrecht
 
-heden - 2018
+heden - sep 2018
 
 ### Minor Data Sciences for Biology, Hogeschool Utrecht
 
@@ -98,7 +98,7 @@ Focus: (Big)Dataverwerking met bash en coderen in R.
 
 Utrecht
 
-heden - 2021
+jun 2021 - feb 2021
 
 -   Project van Princes Macima Centrum om Rshiny app te bouwen voor invullen metadata oncologie screening.
 
