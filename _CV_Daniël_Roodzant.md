@@ -1,7 +1,7 @@
 ---
 title: "Daniël Roodzant's CV"
 author: Daniël Roodzant
-date: "`r Sys.Date()`"
+date: "2021-06-16"
 output: 
   pagedown::html_resume:
     # set it to true for a self-contained HTML page but it'll take longer to render
@@ -165,4 +165,4 @@ Dec 2015 - 2013
 
 <br> <br> This resume was made with the R package
 [**pagedown**](https://github.com/rstudio/pagedown). <br> Last updated
-on `r Sys.Date()`.
+on 2021-06-16.

@@ -34,5 +34,5 @@ Introduction {.unnumbered}
 Welcome to my bookdown portfolio. Here I will show you some of the coding skills I have gathered.
 
 Lets start with my CV which I have created using the pagedown package: <br>
-[My CV](./data/_CV_Daniël_Roodzant.html)
+[My CV](./data/_CV_Daniël_Roodzant.pdf)
 
