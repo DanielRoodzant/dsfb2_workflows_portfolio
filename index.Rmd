@@ -33,7 +33,7 @@ Introduction {.unnumbered}
 ================================================================================
 Welcome to my bookdown portfolio. Here I will show you some of the coding skills I have gathered.
 
-Lets start with my CV which I have created using the pagedown package: <br>
+Lets start with my CV which I have created using the pagedown package in R: <br>
 For Dutch: [Dutch CV](./data/CV_NL/_CV_Daniël_Roodzant_NL.pdf) <br>
 For English: [English CV](./data/CV_EN/_CV_Daniël_Roodzant_EN.pdf)
 

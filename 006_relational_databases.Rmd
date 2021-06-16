@@ -36,17 +36,37 @@ Assignment
 
 14. show all of your actions in this assignment in a Rmd file, perhaps with pictures and provide text explaining and showcasing your skills.
 
-```{r 7.1}
-flu_data <- read.csv('data/flu_data.csv', skip = 11)
-dengue_data <- read.csv("data/dengue_data.csv", skip = 11)
-gapminder <- dslabs::gapminder
-```
+```{r tidyup, eval = FALSE}
+# Load the datasets into R datframes
+flu_data <- read.csv('data/data_raw/flu_data.csv', skip = 11) %>% as_tibble()
+dengue_data <- read.csv("data/data_raw/dengue_data.csv", skip = 11) %>% as_tibble()
+gapminder <- dslabs::gapminder %>% as_tibble()
 
-```{r 7.2}
-flu_data <- flu_data %>% tidyr::pivot_longer(cols = Argentina:Uruguay,
+# Tidy up the flu_data and dengue_data dataframes
+flu_data <- flu_data %>% 
+  tidyr::pivot_longer(cols = Argentina:Uruguay,
                       names_to = "country", 
-                      values_to = "value")
-dengue_data <- dengue_data %>% tidyr::pivot_longer(cols = Argentina:Venezuela,
+                      values_to = "searches")
+dengue_data <- dengue_data %>% 
+  tidyr::pivot_longer(cols = Argentina:Venezuela,
                       names_to = "country", 
-                      values_to = "value")
+                      values_to = "searches")
+
+# Match the column data types of the datasets
+flu_data <- flu_data %>% 
+  transmute(country = as_factor(country),
+            date = as_date(Date),
+            searches = as.double(searches))
+dengue_data <- dengue_data %>% 
+  transmute(country = as_factor(country),
+            date = as_date(Date),
+            searches)
+
+# Save the data in .csv and .rds files
+write.csv(flu_data, "data/data_raw/flu_data_tidy.csv")
+write.csv(dengue_data, "data/data_raw/dengue_data_tidy.csv")
+write.csv(gapminder, "data/data_raw/gapminder.csv")
+write_rds(flu_data, "data/data_raw/flu_data_tidy.rds")
+write_rds(dengue_data, "data/data_raw/dengue_data_tidy.rds")
+write_rds(gapminder, "data/data_raw/gapminder.rds")
 ```
