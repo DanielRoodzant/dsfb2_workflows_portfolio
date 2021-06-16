@@ -34,5 +34,8 @@ Introduction {.unnumbered}
 Welcome to my bookdown portfolio. Here I will show you some of the coding skills I have gathered.
 
 Lets start with my CV which I have created using the pagedown package: <br>
-[My CV](./data/_CV_Daniël_Roodzant.pdf)
+[My CV](https://datascience.hu.nl/rstudio/tlsc-dsfb16v-20-21/files/shared/data/DanielRoodzant/dsfb2_workflows_portfolio/data/_CV_Dani%C3%ABl_Roodzant.html)
 
+```{r, echo=FALSE}
+htmltools::includeHTML("data/_CV_Daniël_Roodzant.html")
+```
