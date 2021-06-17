@@ -24,7 +24,7 @@
 <meta name="author" content="Daniël Roodzant" />
 
 
-<meta name="date" content="2021-06-16" />
+<meta name="date" content="2021-06-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -164,7 +164,14 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="projecticum-princes-maxima-center.html"><a href="projecticum-princes-maxima-center.html#references"><i class="fa fa-check"></i>References</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="looking-ahead.html"><a href="looking-ahead.html"><i class="fa fa-check"></i>Looking ahead</a></li>
-<li class="chapter" data-level="" data-path="relational-databases.html"><a href="relational-databases.html"><i class="fa fa-check"></i>Relational databases</a></li>
+<li class="chapter" data-level="" data-path="relational-databases.html"><a href="relational-databases.html"><i class="fa fa-check"></i>Relational databases</a>
+<ul>
+<li class="chapter" data-level="" data-path="relational-databases.html"><a href="relational-databases.html#intro"><i class="fa fa-check"></i>Intro</a></li>
+<li class="chapter" data-level="" data-path="relational-databases.html"><a href="relational-databases.html#cleaning-up"><i class="fa fa-check"></i>Cleaning up</a></li>
+<li class="chapter" data-level="" data-path="relational-databases.html"><a href="relational-databases.html#using-dbeaver-sql"><i class="fa fa-check"></i>Using DBeaver SQL</a></li>
+<li class="chapter" data-level="" data-path="relational-databases.html"><a href="relational-databases.html#joining-the-data"><i class="fa fa-check"></i>Joining the data</a></li>
+<li class="chapter" data-level="" data-path="relational-databases.html"><a href="relational-databases.html#visualising-the-data"><i class="fa fa-check"></i>Visualising the data</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -264,23 +271,39 @@ An example of this van be found below:
 ## |   |               +-- config.js
 ## |   |               +-- hooks.js
 ## |   |               \-- paged.js
-## |   +-- data_raw
-## |   |   +-- bats_and_covid.R
-## |   |   +-- bibliography_pmc_proj.bib
-## |   |   +-- CE.LIQ.FLOW.062_Tidydata.xlsx
-## |   |   +-- GDELTBatsUS1620.csv
-## |   |   +-- reproducibility_criteria.xlsx
-## |   |   \-- Untidy_example.png
-## |   +-- dengue_data.csv
-## |   \-- flu_data.csv
+## |   \-- data_raw
+## |       +-- bats_and_covid.R
+## |       +-- bibliography_pmc_proj.bib
+## |       +-- CE.LIQ.FLOW.062_Tidydata.xlsx
+## |       +-- DBeaver_example.png
+## |       +-- dengue_data.csv
+## |       +-- dengue_data_tidy.csv
+## |       +-- dengue_data_tidy.rds
+## |       +-- flu_data.csv
+## |       +-- flu_data_tidy.csv
+## |       +-- flu_data_tidy.rds
+## |       +-- gapminder.csv
+## |       +-- gapminder.rds
+## |       +-- GDELTBatsUS1620.csv
+## |       +-- reproducibility_criteria.xlsx
+## |       +-- sql_shell.png
+## |       \-- Untidy_example.png
 ## +-- index.Rmd
 ## +-- README.md
 ## +-- WorkflowsPortfolio.Rproj
 ## +-- _book
 ## |   +-- c-elegans-plate-experiment.html
 ## |   +-- data
+## |   |   +-- CV_EN
+## |   |   |   \-- _CV_Daniël_Roodzant_EN.pdf
+## |   |   +-- CV_NL
+## |   |   |   \-- _CV_Daniël_Roodzant_NL.pdf
 ## |   |   +-- data_raw
 ## |   |   |   +-- bats_and_covid.R
+## |   |   |   +-- DBeaver_example.png
+## |   |   |   +-- dengue_data.csv
+## |   |   |   +-- gapminder.csv
+## |   |   |   +-- sql_shell.png
 ## |   |   |   \-- Untidy_example.png
 ## |   |   +-- _CV_Daniël_Roodzant.html
 ## |   |   +-- _CV_Daniël_Roodzant.pdf
@@ -330,7 +353,11 @@ An example of this van be found below:
 ## |           +-- 1.1.e-1.png
 ## |           +-- 1.1.f-1.png
 ## |           +-- 1.1.j-1.png
-## |           \-- bats_and_covid.R code-1.png
+## |           +-- bats_and_covid.R code-1.png
+## |           +-- data visualisation 1-1.png
+## |           +-- data visualisation 2-1.png
+## |           +-- data visualisation 3-1.png
+## |           \-- data visualisation-1.png
 ## +-- _bookdown_files
 ## +-- _CV_Daniël_Roodzant.md
 ## +-- _main.Rmd
@@ -340,7 +367,11 @@ An example of this van be found below:
 ##         +-- 1.1.e-1.png
 ##         +-- 1.1.f-1.png
 ##         +-- 1.1.j-1.png
-##         \-- bats_and_covid.R code-1.png</code></pre>
+##         +-- bats_and_covid.R code-1.png
+##         +-- data visualisation 1-1.png
+##         +-- data visualisation 2-1.png
+##         +-- data visualisation 3-1.png
+##         \-- data visualisation-1.png</code></pre>
 
 </div>
             </section>

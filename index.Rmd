@@ -27,6 +27,7 @@ library(dplyr)
 library(dslabs)
 library(here)
 library(htmltools)
+library(gridExtra)
 ```
 
 Introduction {.unnumbered}
