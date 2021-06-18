@@ -41,16 +41,9 @@ dengue_data <- dengue_data %>%
                       )
 
 # Match the column types of the datasets
-flu_data <- flu_data %>% 
-  transmute(country = as_factor(country),
-            year = as.character(Date),
-            searches = as.double(searches)
-            )
-dengue_data <- dengue_data %>% 
-  transmute(country = as_factor(country),
-            year = as.character(Date),
-            searches
-            )
+flu_data <- coltrans(flu_data)
+dengue_data <- coltrans(dengue_data)
+
 gapminder <- gapminder %>%
   transform(year = as.character(year))
 
@@ -102,16 +95,8 @@ The Data needs to be joined together to really make some good informative figure
 <br>
 ```{r join tables, message = FALSE, warning = FALSE}
 # Make the data tables joinable
-flu_data <- flu_data %>%
-  mutate(year = str_sub(year, end = 4)) %>% 
-  group_by(country, year) %>% 
-  summarize(searches = round(sum(searches, na.rm = FALSE), 2)
-            )
-dengue_data <- dengue_data %>%
-  mutate(year = str_sub(year, end = 4)) %>% 
-  group_by(country, year) %>% 
-  summarize(searches = round(sum(searches, na.rm = FALSE), 2)
-            )
+flu_data <- datatrans(flu_data)
+dengue_data <- datatrans(dengue_data)
 
 # Join the data tables
 flu_dengue_data <- full_join(flu_data, 

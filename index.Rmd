@@ -15,6 +15,8 @@ output:
   #bookdown::pdf_book: default
 bibliography: data/data_raw/bibliography_pmc_proj.bib
 theme: jekyll-theme-cayman
+params: 
+  data: data/data_raw/covid_params_data
 ---
 
 ```{r setup, include=FALSE}
@@ -28,11 +30,14 @@ library(dslabs)
 library(here)
 library(htmltools)
 library(gridExtra)
+library(devtools)
+library(drporthelp)
 ```
 
 Introduction {.unnumbered}
 ================================================================================
 Welcome to my bookdown portfolio. Here I will show you some of the coding skills I have gathered.
+This portfolio has been created with the help of the [drporthelp package](https://github.com/DanielRoodzantHU/drporthelp) which I have built to reduce the repeating of code.
 
 Lets start with my CV which I have created using the pagedown package in R: <br>
 For Dutch: [Dutch CV](./data/CV_NL/_CV_Daniël_Roodzant_NL.pdf) <br>

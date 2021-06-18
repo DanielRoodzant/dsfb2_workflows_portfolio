@@ -1,0 +1,11 @@
+Parameterized data {.unnumbered}
+================================================================================
+In this excercise I will use the COVID-19 case data from the European Center for Disease Control (ECDC) which I obtained using the folowing code: 
+<br>
+```{r collecting data, eval = FALSE, warning = FALSE}
+# Read the data into a vector
+read.csv("https://opendata.ecdc.europa.eu/covid19/nationalcasedeath_eueea_daily_ei/csv", na.strings = "", fileEncoding = "UTF-8-BOM") %>% write.table(file = "data/data_raw/covid__params_data")
+```
+<br>
+This data will be used to create a parameterized report of COVID-19 cases and deaths in the Netherlands from January 2021 to May 2021.
+<br> <br>
