@@ -16,7 +16,7 @@ output:
 bibliography: data/data_raw/bibliography_pmc_proj.bib
 theme: jekyll-theme-cayman
 params: 
-  data: data/data_raw/covid_params_data
+  data: https://opendata.ecdc.europa.eu/covid19/nationalcasedeath_eueea_daily_ei/csv
 ---
 
 ```{r setup, include=FALSE}
@@ -25,7 +25,6 @@ library(tidyverse)
 library(readxl) 
 library(lubridate)
 library(fs)
-library(dplyr)
 library(dslabs)
 library(here)
 library(htmltools)

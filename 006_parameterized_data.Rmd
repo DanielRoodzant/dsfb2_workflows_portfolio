@@ -1,11 +1,51 @@
+---
+params: 
+  data: https://opendata.ecdc.europa.eu/covid19/nationalcasedeath_eueea_daily_ei/csv
+---
+
 Parameterized data {.unnumbered}
 ================================================================================
-In this excercise I will use the COVID-19 case data from the European Center for Disease Control (ECDC) which I obtained using the folowing code: 
+In this excercise I will use the [COVID-19 case data](https://www.ecdc.europa.eu/en/publications-data/data-daily-new-cases-covid-19-eueea-country) from the European Center for Disease Control (ECDC).<br> 
+Information about the data can be found [here](https://www.ecdc.europa.eu/sites/default/files/documents/Description-and-disclaimer_daily_reporting.pdf)
+<br> <br>
+This data will be used to create a parameterized report of COVID-19 cases and deaths in the Netherlands from the first data in March 2021 to now. May 1st was excluded from this range because this date had an abnormally high value. This is probably because of it being a sum of all the data preceding May 2021.  
 <br>
-```{r collecting data, eval = FALSE, warning = FALSE}
-# Read the data into a vector
-read.csv("https://opendata.ecdc.europa.eu/covid19/nationalcasedeath_eueea_daily_ei/csv", na.strings = "", fileEncoding = "UTF-8-BOM") %>% write.table(file = "data/data_raw/covid__params_data")
+```{r calling and adjusting data,  results = "hide", message = FALSE, warning = FALSE}
+# Filter the data. The first and last line change the date format so the first column can be specified as such
+lct <- Sys.getlocale("LC_TIME"); Sys.setlocale("LC_TIME", "C")
+
+data(list = params$data)
+covid_data <- read_csv(params$data)
+covid_data_filtered <- covid_data %>% 
+  filter(countriesAndTerritories %in% "Netherlands") %>% 
+  transform(dateRep = as_date(dateRep, format = "%d/%m/%Y")
+            )
+
+covid_data_filtered <- covid_data_filtered[-c(110),]
+
+Sys.setlocale("LC_TIME", lct)
+```
+```{r creating graphs, message = FALSE, warning = FALSE}
+# Make ggplot containing covid cases and deaths in the Netherlands during period Jan 2021 to May 2021
+cases <- covid_data_filtered %>% ggplot(aes(x = dateRep, y = cases)) +
+  geom_line(colour = "blue", size = 2) +
+  theme(legend.position = "none") +
+    labs(title = "COVID-19 cases in the Netherlands", 
+       subtitle = "Recorded COVID-19 cases in the Netherlands by date",
+       x = "Month",
+       y = "Cases"
+       )
+
+deaths <- covid_data_filtered %>% ggplot(aes(x = dateRep, y = deaths)) +
+  geom_line(colour = "red", size = 2) +
+  theme(legend.position = "none") +
+    labs(title = "COVID-19 deaths in the Netherlands", 
+       subtitle = "Recorded COVID-19 deaths in the Netherlands by date",
+       x = "Month",
+       y = "Deaths"
+       )
+cases
+deaths
 ```
 <br>
-This data will be used to create a parameterized report of COVID-19 cases and deaths in the Netherlands from January 2021 to May 2021.
-<br> <br>
+What stands out in the graphs is that both the COVID-19 cases and deaths start dropping towards July. This can be related to the large amount of people getting vaccinated in the Netherlands. Another thing that stands out is that even though the amount of cases go up until May, the amount of deaths does not. 

@@ -24,7 +24,7 @@
 <meta name="author" content="Daniël Roodzant" />
 
 
-<meta name="date" content="2021-06-17" />
+<meta name="date" content="2021-06-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -163,7 +163,6 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="" data-path="projecticum-princes-maxima-center.html"><a href="projecticum-princes-maxima-center.html#references"><i class="fa fa-check"></i>References</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="looking-ahead.html"><a href="looking-ahead.html"><i class="fa fa-check"></i>Looking ahead</a></li>
 <li class="chapter" data-level="" data-path="relational-databases.html"><a href="relational-databases.html"><i class="fa fa-check"></i>Relational databases</a>
 <ul>
 <li class="chapter" data-level="" data-path="relational-databases.html"><a href="relational-databases.html#intro"><i class="fa fa-check"></i>Intro</a></li>
@@ -172,6 +171,8 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="relational-databases.html"><a href="relational-databases.html#joining-the-data"><i class="fa fa-check"></i>Joining the data</a></li>
 <li class="chapter" data-level="" data-path="relational-databases.html"><a href="relational-databases.html#visualising-the-data"><i class="fa fa-check"></i>Visualising the data</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="parameterized-data.html"><a href="parameterized-data.html"><i class="fa fa-check"></i>Parameterized data</a></li>
+<li class="chapter" data-level="" data-path="looking-ahead.html"><a href="looking-ahead.html"><i class="fa fa-check"></i>Looking ahead</a></li>
 </ul>
 
       </nav>
@@ -200,8 +201,9 @@ An example of this van be found below:
 ## +-- 002_open_peer_review.Rmd
 ## +-- 003_guerilla_analytics.Rmd
 ## +-- 004_projecticum_pmc.Rmd
-## +-- 005_looking_ahead.Rmd
-## +-- 006_relational_databases.Rmd
+## +-- 005_relational_databases.Rmd
+## +-- 006_parameterized_data.Rmd
+## +-- 007_looking_ahead.Rmd
 ## +-- data
 ## |   +-- CV_EN
 ## |   |   +-- _CV_Daniël_Roodzant_EN.html
@@ -275,6 +277,7 @@ An example of this van be found below:
 ## |       +-- bats_and_covid.R
 ## |       +-- bibliography_pmc_proj.bib
 ## |       +-- CE.LIQ.FLOW.062_Tidydata.xlsx
+## |       +-- covid_params_data
 ## |       +-- DBeaver_example.png
 ## |       +-- dengue_data.csv
 ## |       +-- dengue_data_tidy.csv
@@ -344,6 +347,7 @@ An example of this van be found below:
 ## |   +-- looking-ahead.html
 ## |   +-- main.html
 ## |   +-- open-peer-review.html
+## |   +-- parameterized-data.html
 ## |   +-- projecticum-princes-maxima-center.html
 ## |   +-- relational-databases.html
 ## |   +-- search_index.json
@@ -354,12 +358,15 @@ An example of this van be found below:
 ## |           +-- 1.1.f-1.png
 ## |           +-- 1.1.j-1.png
 ## |           +-- bats_and_covid.R code-1.png
+## |           +-- creating graphs-1.png
+## |           +-- creating graphs-2.png
+## |           +-- creating informative graphs-1.png
+## |           +-- creating informative graphs-2.png
 ## |           +-- data visualisation 1-1.png
 ## |           +-- data visualisation 2-1.png
 ## |           +-- data visualisation 3-1.png
 ## |           \-- data visualisation-1.png
 ## +-- _bookdown_files
-## +-- _CV_Daniël_Roodzant.md
 ## +-- _main.Rmd
 ## \-- _main_files
 ##     \-- figure-html
@@ -368,6 +375,10 @@ An example of this van be found below:
 ##         +-- 1.1.f-1.png
 ##         +-- 1.1.j-1.png
 ##         +-- bats_and_covid.R code-1.png
+##         +-- creating graphs-1.png
+##         +-- creating graphs-2.png
+##         +-- creating informative graphs-1.png
+##         +-- creating informative graphs-2.png
 ##         +-- data visualisation 1-1.png
 ##         +-- data visualisation 2-1.png
 ##         +-- data visualisation 3-1.png
