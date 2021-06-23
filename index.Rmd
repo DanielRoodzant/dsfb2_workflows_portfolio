@@ -14,7 +14,6 @@ output:
         scroll_highlights: yes
   #bookdown::pdf_book: default
 bibliography: data/data_raw/bibliography_pmc_proj.bib
-theme: jekyll-theme-cayman
 params: 
   data: https://opendata.ecdc.europa.eu/covid19/nationalcasedeath_eueea_daily_ei/csv
 ---
