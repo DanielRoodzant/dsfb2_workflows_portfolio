@@ -1,4 +1,4 @@
-Open Peer Review {.unnumbered}
+Open Peer Review 
 ================================================================================
 This exercise is about identifying reproducibility issues in a scientific publication. We use the criteria for reproduciblity that are publicly available.
 <br> <br>
@@ -40,7 +40,7 @@ Now lets reproduce some of the code:
 <br> <br>
 ``` {r bats_and_covid.R code, message = FALSE, warning = FALSE}
 ### Display code chunk from bats_and_covid.R file.###
-# Fig.1 (2016-2020 US Tv news about bats) {.unnumbered}
+# Fig.1 (2016-2020 US Tv news about bats) 
 {
   tv.dat <- 
     read.csv(file="data/data_raw/GDELTBatsUS1620.csv")

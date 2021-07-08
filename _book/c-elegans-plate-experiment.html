@@ -13,7 +13,7 @@
   
   
   
-  
+  <meta name="github-repo" content="DanielRoodzantHU/dsfb2_workflows_portfolio" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="C. elegans plate experiment | R portfolio Daniël Roodzant" />
@@ -190,7 +190,7 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="c.-elegans-plate-experiment" class="section level1 unnumbered">
+<div id="c.-elegans-plate-experiment" class="section level1">
 <h1>C. elegans plate experiment</h1>
 <p>The data for this exercise was kindly supplied by J. Louter (INT/ILC) and was derived from an experiment in which adult C.elegans nematodes were exposed to varying concentrations of different compounds. The variables RawData (the outcome - number of offspring counted as an integer value, after incubation time), compName (the generic name of the compound/chemical), the compConcentration (the concentration of the compound), and the expType are the most important variables in this dataset.
 <br> <br>
@@ -203,9 +203,9 @@ Lets have a look at the excel file containing the data.
 We can see that someone put a lot of care into the make-up of the sheet and it is still difficult to read.
 <br> <br>
 Now lets open the Excel file in R and render the first five rows.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="c-elegans-plate-experiment.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the excel file into a vector and display it in a small table.</span></span>
-<span id="cb1-2"><a href="c-elegans-plate-experiment.html#cb1-2" aria-hidden="true" tabindex="-1"></a>scatter_FLOW<span class="fl">.062</span> <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&#39;data/data_raw/CE.LIQ.FLOW.062_Tidydata.xlsx&#39;</span>) </span>
-<span id="cb1-3"><a href="c-elegans-plate-experiment.html#cb1-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>( scatter_FLOW<span class="fl">.062</span> <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">5</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="c-elegans-plate-experiment.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the excel file into a vector and display it in a small table.</span></span>
+<span id="cb2-2"><a href="c-elegans-plate-experiment.html#cb2-2" aria-hidden="true" tabindex="-1"></a>scatter_FLOW<span class="fl">.062</span> <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&#39;data/data_raw/CE.LIQ.FLOW.062_Tidydata.xlsx&#39;</span>) </span>
+<span id="cb2-3"><a href="c-elegans-plate-experiment.html#cb2-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>( scatter_FLOW<span class="fl">.062</span> <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">5</span>))</span></code></pre></div>
 <table style="width:100%;">
 <colgroup>
 <col width="1%" />
@@ -466,8 +466,8 @@ Now lets open the Excel file in R and render the first five rows.</p>
 </table>
 <p><br> <br>
 And have a look at the data types.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="c-elegans-plate-experiment.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the data type of select columns</span></span>
-<span id="cb2-2"><a href="c-elegans-plate-experiment.html#cb2-2" aria-hidden="true" tabindex="-1"></a>scatter_FLOW<span class="fl">.062</span> <span class="sc">%&gt;%</span> <span class="fu">select</span>(RawData, compName, compConcentration) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="c-elegans-plate-experiment.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the data type of select columns</span></span>
+<span id="cb3-2"><a href="c-elegans-plate-experiment.html#cb3-2" aria-hidden="true" tabindex="-1"></a>scatter_FLOW<span class="fl">.062</span> <span class="sc">%&gt;%</span> <span class="fu">select</span>(RawData, compName, compConcentration) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 3
 ##   RawData compName                   compConcentration
 ##     &lt;dbl&gt; &lt;chr&gt;                      &lt;chr&gt;            
@@ -478,37 +478,37 @@ When we have a look at some of the data types of the collumns RawData, compName 
 Next we will create a scatterplot graph with the data for the different compounds and the varying concentrations.
 <br>
 To do this I first fixed the compConcentration column by making it numeric, put the compConcentration on the x-axis, the RawData counts on the y-axis and assigned a color to each level in compName. I also assigned a different symbol to each level by the expType variable.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="c-elegans-plate-experiment.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transform the datatype of compConcentration to dbl</span></span>
-<span id="cb4-2"><a href="c-elegans-plate-experiment.html#cb4-2" aria-hidden="true" tabindex="-1"></a>scatter_FLOW<span class="fl">.062</span> <span class="ot">&lt;-</span> scatter_FLOW<span class="fl">.062</span> <span class="sc">%&gt;%</span> <span class="fu">transform</span>(<span class="at">compConcentration =</span> <span class="fu">as.double</span>(compConcentration))</span>
-<span id="cb4-3"><a href="c-elegans-plate-experiment.html#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="c-elegans-plate-experiment.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting data using ggplot</span></span>
-<span id="cb4-5"><a href="c-elegans-plate-experiment.html#cb4-5" aria-hidden="true" tabindex="-1"></a>scatter_FLOW<span class="fl">.062</span> <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> compConcentration, <span class="at">y =</span> RawData)) <span class="sc">+</span> </span>
-<span id="cb4-6"><a href="c-elegans-plate-experiment.html#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> compName, <span class="at">shape =</span> expType)) <span class="sc">+</span> </span>
-<span id="cb4-7"><a href="c-elegans-plate-experiment.html#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Compound RawData per compound concentration&quot;</span>,</span>
-<span id="cb4-8"><a href="c-elegans-plate-experiment.html#cb4-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&quot;Data supplied by J. Louter (INT/ILC)&quot;</span>) </span></code></pre></div>
-<p><img src="_main_files/figure-html/1.1.d-1.png" width="672" />
-<br> <br>
-If I would not have changed the data type of the compConcentration column this would have happened:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="c-elegans-plate-experiment.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show example of the wrong graph from unedited .xlsx format by retrieving data</span></span>
-<span id="cb5-2"><a href="c-elegans-plate-experiment.html#cb5-2" aria-hidden="true" tabindex="-1"></a>wrong_scatter_FLOW<span class="fl">.062</span> <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&#39;data/data_raw/CE.LIQ.FLOW.062_Tidydata.xlsx&#39;</span>)</span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="c-elegans-plate-experiment.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transform the datatype of compConcentration to dbl</span></span>
+<span id="cb5-2"><a href="c-elegans-plate-experiment.html#cb5-2" aria-hidden="true" tabindex="-1"></a>scatter_FLOW<span class="fl">.062</span> <span class="ot">&lt;-</span> scatter_FLOW<span class="fl">.062</span> <span class="sc">%&gt;%</span> <span class="fu">transform</span>(<span class="at">compConcentration =</span> <span class="fu">as.double</span>(compConcentration))</span>
 <span id="cb5-3"><a href="c-elegans-plate-experiment.html#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-4"><a href="c-elegans-plate-experiment.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting data using ggplot</span></span>
-<span id="cb5-5"><a href="c-elegans-plate-experiment.html#cb5-5" aria-hidden="true" tabindex="-1"></a>wrong_scatter_FLOW<span class="fl">.062</span> <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> compConcentration, <span class="at">y =</span> RawData)) <span class="sc">+</span> </span>
+<span id="cb5-5"><a href="c-elegans-plate-experiment.html#cb5-5" aria-hidden="true" tabindex="-1"></a>scatter_FLOW<span class="fl">.062</span> <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> compConcentration, <span class="at">y =</span> RawData)) <span class="sc">+</span> </span>
 <span id="cb5-6"><a href="c-elegans-plate-experiment.html#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> compName, <span class="at">shape =</span> expType)) <span class="sc">+</span> </span>
 <span id="cb5-7"><a href="c-elegans-plate-experiment.html#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Compound RawData per compound concentration&quot;</span>,</span>
 <span id="cb5-8"><a href="c-elegans-plate-experiment.html#cb5-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&quot;Data supplied by J. Louter (INT/ILC)&quot;</span>) </span></code></pre></div>
+<p><img src="_main_files/figure-html/1.1.d-1.png" width="672" />
+<br> <br>
+If I would not have changed the data type of the compConcentration column this would have happened:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="c-elegans-plate-experiment.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show example of the wrong graph from unedited .xlsx format by retrieving data</span></span>
+<span id="cb6-2"><a href="c-elegans-plate-experiment.html#cb6-2" aria-hidden="true" tabindex="-1"></a>wrong_scatter_FLOW<span class="fl">.062</span> <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&#39;data/data_raw/CE.LIQ.FLOW.062_Tidydata.xlsx&#39;</span>)</span>
+<span id="cb6-3"><a href="c-elegans-plate-experiment.html#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="c-elegans-plate-experiment.html#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting data using ggplot</span></span>
+<span id="cb6-5"><a href="c-elegans-plate-experiment.html#cb6-5" aria-hidden="true" tabindex="-1"></a>wrong_scatter_FLOW<span class="fl">.062</span> <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> compConcentration, <span class="at">y =</span> RawData)) <span class="sc">+</span> </span>
+<span id="cb6-6"><a href="c-elegans-plate-experiment.html#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> compName, <span class="at">shape =</span> expType)) <span class="sc">+</span> </span>
+<span id="cb6-7"><a href="c-elegans-plate-experiment.html#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Compound RawData per compound concentration&quot;</span>,</span>
+<span id="cb6-8"><a href="c-elegans-plate-experiment.html#cb6-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&quot;Data supplied by J. Louter (INT/ILC)&quot;</span>) </span></code></pre></div>
 <p><img src="_main_files/figure-html/1.1.e-1.png" width="672" />
 <br>
 Every concentration is seen as a separate point because the column has the ‘chr’ type.
 <br> <br>
 Now, with the correct data types we will tweak the graph using a log10 transformation on the x-axis to get a clear graph. I also added a bit of jitter to prevent the points in the graph from overlapping.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="c-elegans-plate-experiment.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot data using log10 function in ggplot</span></span>
-<span id="cb6-2"><a href="c-elegans-plate-experiment.html#cb6-2" aria-hidden="true" tabindex="-1"></a>scatter_FLOW<span class="fl">.062</span> <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> compConcentration, <span class="at">y =</span> RawData)) <span class="sc">+</span> </span>
-<span id="cb6-3"><a href="c-elegans-plate-experiment.html#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb6-4"><a href="c-elegans-plate-experiment.html#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">colour =</span> compName, <span class="at">shape =</span> expType), <span class="at">width =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb6-5"><a href="c-elegans-plate-experiment.html#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
-<span id="cb6-6"><a href="c-elegans-plate-experiment.html#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Compound RawData per compound concentration&quot;</span>,</span>
-<span id="cb6-7"><a href="c-elegans-plate-experiment.html#cb6-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&quot;Data supplied by J. Louter (INT/ILC)&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="c-elegans-plate-experiment.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot data using log10 function in ggplot</span></span>
+<span id="cb7-2"><a href="c-elegans-plate-experiment.html#cb7-2" aria-hidden="true" tabindex="-1"></a>scatter_FLOW<span class="fl">.062</span> <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> compConcentration, <span class="at">y =</span> RawData)) <span class="sc">+</span> </span>
+<span id="cb7-3"><a href="c-elegans-plate-experiment.html#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb7-4"><a href="c-elegans-plate-experiment.html#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">colour =</span> compName, <span class="at">shape =</span> expType), <span class="at">width =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb7-5"><a href="c-elegans-plate-experiment.html#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
+<span id="cb7-6"><a href="c-elegans-plate-experiment.html#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Compound RawData per compound concentration&quot;</span>,</span>
+<span id="cb7-7"><a href="c-elegans-plate-experiment.html#cb7-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&quot;Data supplied by J. Louter (INT/ILC)&quot;</span>) </span></code></pre></div>
 <p><img src="_main_files/figure-html/1.1.f-1.png" width="672" />
 <br>
 The positive control for this experiments is ethanol. The negative control for this experiment is S-medium.
@@ -522,22 +522,22 @@ To analyze this experiment and learn whether there is indeed an effect of differ
 <br> <br>
 For the next vizualization of the data I have normalised the data
 Normalize the data for the controlNegative in such a way that the mean value for controlNegative is exactly equal to 1 and that all other values are expressed as a fraction thereof. Rerun your graphs with the normalized data.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="c-elegans-plate-experiment.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the mean of the RawData</span></span>
-<span id="cb7-2"><a href="c-elegans-plate-experiment.html#cb7-2" aria-hidden="true" tabindex="-1"></a>mean_data_FLOW<span class="fl">.062</span> <span class="ot">&lt;-</span> scatter_FLOW<span class="fl">.062</span> <span class="sc">%&gt;%</span> </span>
-<span id="cb7-3"><a href="c-elegans-plate-experiment.html#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(expType, RawData, compName, compConcentration) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-4"><a href="c-elegans-plate-experiment.html#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(expType) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-5"><a href="c-elegans-plate-experiment.html#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(expType <span class="sc">==</span> <span class="st">&#39;controlNegative&#39;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-6"><a href="c-elegans-plate-experiment.html#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_RawData =</span> <span class="fu">mean</span>(RawData, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) </span>
-<span id="cb7-7"><a href="c-elegans-plate-experiment.html#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="c-elegans-plate-experiment.html#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Normalise the RawData using the calculated mean</span></span>
-<span id="cb7-9"><a href="c-elegans-plate-experiment.html#cb7-9" aria-hidden="true" tabindex="-1"></a>normalized_FLOW<span class="fl">.062</span> <span class="ot">&lt;-</span> scatter_FLOW<span class="fl">.062</span> <span class="sc">%&gt;%</span> </span>
-<span id="cb7-10"><a href="c-elegans-plate-experiment.html#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(expType, compName, compConcentration, RawData) <span class="sc">%&gt;%</span></span>
-<span id="cb7-11"><a href="c-elegans-plate-experiment.html#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">RawData_normalized =</span> RawData <span class="sc">/</span> mean_data_FLOW<span class="fl">.062</span><span class="sc">$</span>mean_RawData)</span>
-<span id="cb7-12"><a href="c-elegans-plate-experiment.html#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-13"><a href="c-elegans-plate-experiment.html#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the mean of the normalised data</span></span>
-<span id="cb7-14"><a href="c-elegans-plate-experiment.html#cb7-14" aria-hidden="true" tabindex="-1"></a>mean_normalized_FLOW<span class="fl">.062</span> <span class="ot">&lt;-</span> normalized_FLOW<span class="fl">.062</span> <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(expType, compName, compConcentration) <span class="sc">%&gt;%</span></span>
-<span id="cb7-15"><a href="c-elegans-plate-experiment.html#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_RawData_normalized =</span> <span class="fu">mean</span>(RawData_normalized, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb7-16"><a href="c-elegans-plate-experiment.html#cb7-16" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(mean_normalized_FLOW<span class="fl">.062</span> <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">5</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="c-elegans-plate-experiment.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the mean of the RawData</span></span>
+<span id="cb8-2"><a href="c-elegans-plate-experiment.html#cb8-2" aria-hidden="true" tabindex="-1"></a>mean_data_FLOW<span class="fl">.062</span> <span class="ot">&lt;-</span> scatter_FLOW<span class="fl">.062</span> <span class="sc">%&gt;%</span> </span>
+<span id="cb8-3"><a href="c-elegans-plate-experiment.html#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(expType, RawData, compName, compConcentration) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-4"><a href="c-elegans-plate-experiment.html#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(expType) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-5"><a href="c-elegans-plate-experiment.html#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(expType <span class="sc">==</span> <span class="st">&#39;controlNegative&#39;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-6"><a href="c-elegans-plate-experiment.html#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_RawData =</span> <span class="fu">mean</span>(RawData, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) </span>
+<span id="cb8-7"><a href="c-elegans-plate-experiment.html#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="c-elegans-plate-experiment.html#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Normalise the RawData using the calculated mean</span></span>
+<span id="cb8-9"><a href="c-elegans-plate-experiment.html#cb8-9" aria-hidden="true" tabindex="-1"></a>normalized_FLOW<span class="fl">.062</span> <span class="ot">&lt;-</span> scatter_FLOW<span class="fl">.062</span> <span class="sc">%&gt;%</span> </span>
+<span id="cb8-10"><a href="c-elegans-plate-experiment.html#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(expType, compName, compConcentration, RawData) <span class="sc">%&gt;%</span></span>
+<span id="cb8-11"><a href="c-elegans-plate-experiment.html#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">RawData_normalized =</span> RawData <span class="sc">/</span> mean_data_FLOW<span class="fl">.062</span><span class="sc">$</span>mean_RawData)</span>
+<span id="cb8-12"><a href="c-elegans-plate-experiment.html#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="c-elegans-plate-experiment.html#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the mean of the normalised data</span></span>
+<span id="cb8-14"><a href="c-elegans-plate-experiment.html#cb8-14" aria-hidden="true" tabindex="-1"></a>mean_normalized_FLOW<span class="fl">.062</span> <span class="ot">&lt;-</span> normalized_FLOW<span class="fl">.062</span> <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(expType, compName, compConcentration) <span class="sc">%&gt;%</span></span>
+<span id="cb8-15"><a href="c-elegans-plate-experiment.html#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_RawData_normalized =</span> <span class="fu">mean</span>(RawData_normalized, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb8-16"><a href="c-elegans-plate-experiment.html#cb8-16" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(mean_normalized_FLOW<span class="fl">.062</span> <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">5</span>))</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -580,12 +580,12 @@ Normalize the data for the controlNegative in such a way that the mean value for
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="c-elegans-plate-experiment.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the normalised mean using ggplot</span></span>
-<span id="cb8-2"><a href="c-elegans-plate-experiment.html#cb8-2" aria-hidden="true" tabindex="-1"></a>mean_normalized_FLOW<span class="fl">.062</span> <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> compConcentration, <span class="at">y =</span> mean_RawData_normalized)) <span class="sc">+</span> </span>
-<span id="cb8-3"><a href="c-elegans-plate-experiment.html#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb8-4"><a href="c-elegans-plate-experiment.html#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">colour =</span> compName, <span class="at">shape =</span> expType), <span class="at">width =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb8-5"><a href="c-elegans-plate-experiment.html#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Normalized mean compound RawData per compound concentration&quot;</span>,</span>
-<span id="cb8-6"><a href="c-elegans-plate-experiment.html#cb8-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&quot;Data supplied by J. Louter (INT/ILC)&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="c-elegans-plate-experiment.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the normalised mean using ggplot</span></span>
+<span id="cb9-2"><a href="c-elegans-plate-experiment.html#cb9-2" aria-hidden="true" tabindex="-1"></a>mean_normalized_FLOW<span class="fl">.062</span> <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> compConcentration, <span class="at">y =</span> mean_RawData_normalized)) <span class="sc">+</span> </span>
+<span id="cb9-3"><a href="c-elegans-plate-experiment.html#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb9-4"><a href="c-elegans-plate-experiment.html#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">colour =</span> compName, <span class="at">shape =</span> expType), <span class="at">width =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb9-5"><a href="c-elegans-plate-experiment.html#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Normalized mean compound RawData per compound concentration&quot;</span>,</span>
+<span id="cb9-6"><a href="c-elegans-plate-experiment.html#cb9-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&quot;Data supplied by J. Louter (INT/ILC)&quot;</span>) </span></code></pre></div>
 <p><img src="_main_files/figure-html/1.1.j-1.png" width="672" />
 <br>
 I took this step to get the result in relation to the ‘0 value’ which makes it easier to compare the samples to the “normal” value.</p>
@@ -613,9 +613,9 @@ I took this step to get the result in relation to the ‘0 value’ which makes 
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
+"github": true,
+"facebook": false,
+"twitter": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,

@@ -3,7 +3,7 @@ params:
   data: https://opendata.ecdc.europa.eu/covid19/nationalcasedeath_eueea_daily_ei/csv
 ---
 
-Parameterized data {.unnumbered}
+Parameterized data 
 ================================================================================
 In this excercise I will use the [COVID-19 case data](https://www.ecdc.europa.eu/en/publications-data/data-daily-new-cases-covid-19-eueea-country) from the European Center for Disease Control (ECDC).<br> 
 Information about the data can be found [here](https://www.ecdc.europa.eu/sites/default/files/documents/Description-and-disclaimer_daily_reporting.pdf)

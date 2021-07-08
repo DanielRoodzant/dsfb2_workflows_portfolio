@@ -1,4 +1,4 @@
-Looking ahead {.unnumbered}
+Looking ahead 
 ================================================================================
 In 2 years time I want to be working as a data scientist for a research group most preferably in the field of genomics or proteomics. My first big step and also my first big inspiration in regards to bioinformatics and data science is creating this digital portfolio as a result of the minor Data Science For Biology at the University of Applied Science Utrecht. 
 <br> <br>

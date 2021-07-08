@@ -5,14 +5,20 @@ date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output:
   bookdown::gitbook:
-    number_sections: true
+    number_sections: false
     split_by: chapter 
     config:
+      sharing:
+        github: yes
+        facebook: no
+        twitter: no
       toc:
         collapse: section
         scroll_highlights: yes
-  #bookdown::pdf_book: default
-bibliography: data/data_raw/bibliography_pmc_proj.bib
+bibliography: [bibliography_pmc_proj.bib]
+link-citations: yes
+always_allow_html: yes
+github-repo: "DanielRoodzantHU/dsfb2_workflows_portfolio"
 params: 
   data: https://opendata.ecdc.europa.eu/covid19/nationalcasedeath_eueea_daily_ei/csv
 ---
@@ -31,7 +37,7 @@ library(devtools)
 library(drporthelp)
 ```
 
-Introduction {.unnumbered}
+Introduction
 ================================================================================
 Welcome to my bookdown portfolio. Here I will show you some of the coding skills I have gathered.
 This portfolio has been created with the help of the [drporthelp package](https://github.com/DanielRoodzantHU/drporthelp) which I have built to reduce the repeating of code.
@@ -39,4 +45,3 @@ This portfolio has been created with the help of the [drporthelp package](https:
 Lets start with my CV which I have created using the pagedown package in R: <br>
 For Dutch: [Dutch CV](./data/CV_NL/_CV_Daniël_Roodzant_NL.pdf) <br>
 For English: [English CV](./data/CV_EN/_CV_Daniël_Roodzant_EN.pdf)
-

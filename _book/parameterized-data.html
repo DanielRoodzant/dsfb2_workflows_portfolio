@@ -13,7 +13,7 @@
   
   
   
-  
+  <meta name="github-repo" content="DanielRoodzantHU/dsfb2_workflows_portfolio" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Parameterized data | R portfolio Daniël Roodzant" />
@@ -190,47 +190,47 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="parameterized-data" class="section level1 unnumbered">
+<div id="parameterized-data" class="section level1">
 <h1>Parameterized data</h1>
 <p>In this excercise I will use the <a href="https://www.ecdc.europa.eu/en/publications-data/data-daily-new-cases-covid-19-eueea-country">COVID-19 case data</a> from the European Center for Disease Control (ECDC).<br>
 Information about the data can be found <a href="https://www.ecdc.europa.eu/sites/default/files/documents/Description-and-disclaimer_daily_reporting.pdf">here</a>
 <br> <br>
 This data will be used to create a parameterized report of COVID-19 cases and deaths in the Netherlands from the first data in March 2021 to now. May 1st was excluded from this range because this date had an abnormally high value. This is probably because of it being a sum of all the data preceding May 2021.<br />
 <br></p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="parameterized-data.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the data. The first and last line change the date format so the first column can be specified as such</span></span>
-<span id="cb17-2"><a href="parameterized-data.html#cb17-2" aria-hidden="true" tabindex="-1"></a>lct <span class="ot">&lt;-</span> <span class="fu">Sys.getlocale</span>(<span class="st">&quot;LC_TIME&quot;</span>); <span class="fu">Sys.setlocale</span>(<span class="st">&quot;LC_TIME&quot;</span>, <span class="st">&quot;C&quot;</span>)</span>
-<span id="cb17-3"><a href="parameterized-data.html#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="parameterized-data.html#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="at">list =</span> params<span class="sc">$</span>data)</span>
-<span id="cb17-5"><a href="parameterized-data.html#cb17-5" aria-hidden="true" tabindex="-1"></a>covid_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(params<span class="sc">$</span>data)</span>
-<span id="cb17-6"><a href="parameterized-data.html#cb17-6" aria-hidden="true" tabindex="-1"></a>covid_data_filtered <span class="ot">&lt;-</span> covid_data <span class="sc">%&gt;%</span> </span>
-<span id="cb17-7"><a href="parameterized-data.html#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(countriesAndTerritories <span class="sc">%in%</span> <span class="st">&quot;Netherlands&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb17-8"><a href="parameterized-data.html#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transform</span>(<span class="at">dateRep =</span> <span class="fu">as_date</span>(dateRep, <span class="at">format =</span> <span class="st">&quot;%d/%m/%Y&quot;</span>)</span>
-<span id="cb17-9"><a href="parameterized-data.html#cb17-9" aria-hidden="true" tabindex="-1"></a>            )</span>
-<span id="cb17-10"><a href="parameterized-data.html#cb17-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-11"><a href="parameterized-data.html#cb17-11" aria-hidden="true" tabindex="-1"></a>covid_data_filtered <span class="ot">&lt;-</span> covid_data_filtered[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">110</span>),]</span>
-<span id="cb17-12"><a href="parameterized-data.html#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-13"><a href="parameterized-data.html#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setlocale</span>(<span class="st">&quot;LC_TIME&quot;</span>, lct)</span></code></pre></div>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="parameterized-data.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make ggplot containing covid cases and deaths in the Netherlands during period Jan 2021 to May 2021</span></span>
-<span id="cb18-2"><a href="parameterized-data.html#cb18-2" aria-hidden="true" tabindex="-1"></a>cases <span class="ot">&lt;-</span> covid_data_filtered <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> dateRep, <span class="at">y =</span> cases)) <span class="sc">+</span></span>
-<span id="cb18-3"><a href="parameterized-data.html#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">colour =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb18-4"><a href="parameterized-data.html#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb18-5"><a href="parameterized-data.html#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;COVID-19 cases in the Netherlands&quot;</span>, </span>
-<span id="cb18-6"><a href="parameterized-data.html#cb18-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Recorded COVID-19 cases in the Netherlands by date&quot;</span>,</span>
-<span id="cb18-7"><a href="parameterized-data.html#cb18-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Month&quot;</span>,</span>
-<span id="cb18-8"><a href="parameterized-data.html#cb18-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Cases&quot;</span></span>
-<span id="cb18-9"><a href="parameterized-data.html#cb18-9" aria-hidden="true" tabindex="-1"></a>       )</span>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="parameterized-data.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the data. The first and last line change the date format so the first column can be specified as such</span></span>
+<span id="cb18-2"><a href="parameterized-data.html#cb18-2" aria-hidden="true" tabindex="-1"></a>lct <span class="ot">&lt;-</span> <span class="fu">Sys.getlocale</span>(<span class="st">&quot;LC_TIME&quot;</span>); <span class="fu">Sys.setlocale</span>(<span class="st">&quot;LC_TIME&quot;</span>, <span class="st">&quot;C&quot;</span>)</span>
+<span id="cb18-3"><a href="parameterized-data.html#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="parameterized-data.html#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="at">list =</span> params<span class="sc">$</span>data)</span>
+<span id="cb18-5"><a href="parameterized-data.html#cb18-5" aria-hidden="true" tabindex="-1"></a>covid_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(params<span class="sc">$</span>data)</span>
+<span id="cb18-6"><a href="parameterized-data.html#cb18-6" aria-hidden="true" tabindex="-1"></a>covid_data_filtered <span class="ot">&lt;-</span> covid_data <span class="sc">%&gt;%</span> </span>
+<span id="cb18-7"><a href="parameterized-data.html#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(countriesAndTerritories <span class="sc">%in%</span> <span class="st">&quot;Netherlands&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-8"><a href="parameterized-data.html#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transform</span>(<span class="at">dateRep =</span> <span class="fu">as_date</span>(dateRep, <span class="at">format =</span> <span class="st">&quot;%d/%m/%Y&quot;</span>)</span>
+<span id="cb18-9"><a href="parameterized-data.html#cb18-9" aria-hidden="true" tabindex="-1"></a>            )</span>
 <span id="cb18-10"><a href="parameterized-data.html#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-11"><a href="parameterized-data.html#cb18-11" aria-hidden="true" tabindex="-1"></a>deaths <span class="ot">&lt;-</span> covid_data_filtered <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> dateRep, <span class="at">y =</span> deaths)) <span class="sc">+</span></span>
-<span id="cb18-12"><a href="parameterized-data.html#cb18-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">colour =</span> <span class="st">&quot;red&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb18-13"><a href="parameterized-data.html#cb18-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb18-14"><a href="parameterized-data.html#cb18-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;COVID-19 deaths in the Netherlands&quot;</span>, </span>
-<span id="cb18-15"><a href="parameterized-data.html#cb18-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Recorded COVID-19 deaths in the Netherlands by date&quot;</span>,</span>
-<span id="cb18-16"><a href="parameterized-data.html#cb18-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Month&quot;</span>,</span>
-<span id="cb18-17"><a href="parameterized-data.html#cb18-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Deaths&quot;</span></span>
-<span id="cb18-18"><a href="parameterized-data.html#cb18-18" aria-hidden="true" tabindex="-1"></a>       )</span>
-<span id="cb18-19"><a href="parameterized-data.html#cb18-19" aria-hidden="true" tabindex="-1"></a>cases</span></code></pre></div>
+<span id="cb18-11"><a href="parameterized-data.html#cb18-11" aria-hidden="true" tabindex="-1"></a>covid_data_filtered <span class="ot">&lt;-</span> covid_data_filtered[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">110</span>),]</span>
+<span id="cb18-12"><a href="parameterized-data.html#cb18-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-13"><a href="parameterized-data.html#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setlocale</span>(<span class="st">&quot;LC_TIME&quot;</span>, lct)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="parameterized-data.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make ggplot containing covid cases and deaths in the Netherlands during period Jan 2021 to May 2021</span></span>
+<span id="cb19-2"><a href="parameterized-data.html#cb19-2" aria-hidden="true" tabindex="-1"></a>cases <span class="ot">&lt;-</span> covid_data_filtered <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> dateRep, <span class="at">y =</span> cases)) <span class="sc">+</span></span>
+<span id="cb19-3"><a href="parameterized-data.html#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">colour =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb19-4"><a href="parameterized-data.html#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb19-5"><a href="parameterized-data.html#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;COVID-19 cases in the Netherlands&quot;</span>, </span>
+<span id="cb19-6"><a href="parameterized-data.html#cb19-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Recorded COVID-19 cases in the Netherlands by date&quot;</span>,</span>
+<span id="cb19-7"><a href="parameterized-data.html#cb19-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Month&quot;</span>,</span>
+<span id="cb19-8"><a href="parameterized-data.html#cb19-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Cases&quot;</span></span>
+<span id="cb19-9"><a href="parameterized-data.html#cb19-9" aria-hidden="true" tabindex="-1"></a>       )</span>
+<span id="cb19-10"><a href="parameterized-data.html#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-11"><a href="parameterized-data.html#cb19-11" aria-hidden="true" tabindex="-1"></a>deaths <span class="ot">&lt;-</span> covid_data_filtered <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> dateRep, <span class="at">y =</span> deaths)) <span class="sc">+</span></span>
+<span id="cb19-12"><a href="parameterized-data.html#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">colour =</span> <span class="st">&quot;red&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb19-13"><a href="parameterized-data.html#cb19-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb19-14"><a href="parameterized-data.html#cb19-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;COVID-19 deaths in the Netherlands&quot;</span>, </span>
+<span id="cb19-15"><a href="parameterized-data.html#cb19-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Recorded COVID-19 deaths in the Netherlands by date&quot;</span>,</span>
+<span id="cb19-16"><a href="parameterized-data.html#cb19-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Month&quot;</span>,</span>
+<span id="cb19-17"><a href="parameterized-data.html#cb19-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Deaths&quot;</span></span>
+<span id="cb19-18"><a href="parameterized-data.html#cb19-18" aria-hidden="true" tabindex="-1"></a>       )</span>
+<span id="cb19-19"><a href="parameterized-data.html#cb19-19" aria-hidden="true" tabindex="-1"></a>cases</span></code></pre></div>
 <p><img src="_main_files/figure-html/creating%20graphs-1.png" width="672" /></p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="parameterized-data.html#cb19-1" aria-hidden="true" tabindex="-1"></a>deaths</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="parameterized-data.html#cb20-1" aria-hidden="true" tabindex="-1"></a>deaths</span></code></pre></div>
 <p><img src="_main_files/figure-html/creating%20graphs-2.png" width="672" />
 <br>
 What stands out in the graphs is that both the COVID-19 cases and deaths start dropping towards July. This can be related to the large amount of people getting vaccinated in the Netherlands. Another thing that stands out is that even though the amount of cases go up until May, the amount of deaths does not.</p>
@@ -258,9 +258,9 @@ What stands out in the graphs is that both the COVID-19 cases and deaths start d
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
+"github": true,
+"facebook": false,
+"twitter": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
