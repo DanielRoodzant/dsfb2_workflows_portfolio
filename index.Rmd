@@ -3,7 +3,6 @@ title: "R portfolio Daniël Roodzant"
 author: "Daniël Roodzant"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
-new_session: yes
 output:
   bookdown::gitbook:
     number_sections: true
