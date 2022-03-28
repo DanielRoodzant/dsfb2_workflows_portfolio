@@ -14,6 +14,7 @@ link-citations: yes
 always_allow_html: yes
 params: 
   data: https://opendata.ecdc.europa.eu/covid19/nationalcasedeath_eueea_daily_ei/csv
+new_session: yes
 ---
 
 ```{r setup, include=FALSE}
