@@ -3,12 +3,10 @@ params:
   data: https://opendata.ecdc.europa.eu/covid19/nationalcasedeath_eueea_daily_ei/csv
 ---
 
-Parameterized data 
-================================================================================
-In this excercise I will use the [COVID-19 case data](https://www.ecdc.europa.eu/en/publications-data/data-daily-new-cases-covid-19-eueea-country) from the European Center for Disease Control (ECDC).<br> 
+# Parameterized data 
+
+For this page the [COVID-19 case data](https://www.ecdc.europa.eu/en/publications-data/data-daily-new-cases-covid-19-eueea-country) from the European Center for Disease Control (ECDC) was used to create a parameterized report of COVID-19 cases and deaths in the Netherlands from the first data in February 2020 to end of March 2022. February 2nd 2022 was excluded from this range because this date had an abnormally high value. This is probably because of Dutch labs not being able to process the high number of covid-PCR tests taken around this date.<br> <br>
 Information about the data can be found [here](https://www.ecdc.europa.eu/sites/default/files/documents/Description-and-disclaimer_daily_reporting.pdf)
-<br> <br>
-This data will be used to create a parameterized report of COVID-19 cases and deaths in the Netherlands from the first data in March 2021 to now. May 1st was excluded from this range because this date had an abnormally high value. This is probably because of it being a sum of all the data preceding May 2021.  
 <br>
 ```{r calling and adjusting data,  results = "hide", message = FALSE, warning = FALSE}
 # Filter the data. The first and last line change the date format so the first column can be specified as such
@@ -21,7 +19,7 @@ covid_data_filtered <- covid_data %>%
   transform(dateRep = as_date(dateRep, format = "%d/%m/%Y")
             )
 
-covid_data_filtered <- covid_data_filtered[-c(110),]
+covid_data_filtered <- covid_data_filtered[-c(43),]
 
 Sys.setlocale("LC_TIME", lct)
 ```
@@ -44,8 +42,10 @@ deaths <- covid_data_filtered %>% ggplot(aes(x = dateRep, y = deaths)) +
        x = "Month",
        y = "Deaths"
        )
+# Plot for cases
 cases
+# Plot for deaths
 deaths
 ```
 <br>
-What stands out in the graphs is that both the COVID-19 cases and deaths start dropping towards July. This can be related to the large amount of people getting vaccinated in the Netherlands. Another thing that stands out is that even though the amount of cases go up until May, the amount of deaths does not. 
+What stands out in the graphs is that even though the amount of Covid-19 cases starts rising more towards the end of the graph the amount of deaths decline. This could be due to the fact that the Delta- and Omicron variants of the Corona virus were less lethal even though they caused infections to spread more rapidly among the Dutch population. This becomes more evident when looking at the data from 2022. At the end of 2021 and the start of 2022, the Omicron variant started causing a rapid increase in the infection rate of Covid-19 but the amount of deaths in this time is incredibly low. Especially when compared to the number of cases. 

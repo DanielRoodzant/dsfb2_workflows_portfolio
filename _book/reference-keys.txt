@@ -1,0 +1,14 @@
+introduction
+c.-elegans-plate-experiment
+open-peer-review
+guerrilla-analytics-framework
+projecticum-princes-maxima-center
+references
+relational-databases
+intro
+cleaning-up
+using-dbeaver-sql
+joining-the-data
+visualising-the-data
+parameterized-data
+looking-ahead

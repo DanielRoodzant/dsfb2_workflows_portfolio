@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>2 C. elegans plate experiment | R portfolio Daniël Roodzant</title>
+<meta name="author" content="Daniël Roodzant">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="2 C. elegans plate experiment | R portfolio Daniël Roodzant">
+<meta property="og:type" content="book">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2 C. elegans plate experiment | R portfolio Daniël Roodzant">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><meta name="description" content="The data for this exercise was kindly supplied by J. Louter (INT/ILC) and was derived from an experiment in which adult C.elegans nematodes were exposed to varying concentrations of different...">
+<meta property="og:description" content="The data for this exercise was kindly supplied by J. Louter (INT/ILC) and was derived from an experiment in which adult C.elegans nematodes were exposed to varying concentrations of different...">
+<meta name="twitter:description" content="The data for this exercise was kindly supplied by J. Louter (INT/ILC) and was derived from an experiment in which adult C.elegans nematodes were exposed to varying concentrations of different...">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">R portfolio Daniël Roodzant</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Introduction</a></li>
+<li><a class="active" href="c.-elegans-plate-experiment.html"><span class="header-section-number">2</span> C. elegans plate experiment</a></li>
+<li><a class="" href="open-peer-review.html"><span class="header-section-number">3</span> Open Peer Review</a></li>
+<li><a class="" href="guerrilla-analytics-framework.html"><span class="header-section-number">4</span> Guerrilla analytics framework</a></li>
+<li><a class="" href="projecticum-princes-maxima-center.html"><span class="header-section-number">5</span> Projecticum Princes Maxima Center</a></li>
+<li><a class="" href="relational-databases.html"><span class="header-section-number">6</span> Relational databases</a></li>
+<li><a class="" href="parameterized-data.html"><span class="header-section-number">7</span> Parameterized data</a></li>
+<li><a class="" href="looking-ahead.html"><span class="header-section-number">8</span> Looking ahead</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/DanielRoodzant/dsfb2_workflows_portfolio">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="c.-elegans-plate-experiment" class="section level1" number="2">
+<h1>
+<span class="header-section-number">2</span> C. elegans plate experiment<a class="anchor" aria-label="anchor" href="#c.-elegans-plate-experiment"><i class="fas fa-link"></i></a>
+</h1>
+<p>The data for this exercise was kindly supplied by J. Louter (INT/ILC) and was derived from an experiment in which adult C.elegans nematodes were exposed to varying concentrations of different compounds. The variables RawData (the outcome - number of offspring counted as an integer value, after incubation time), compName (the generic name of the compound/chemical), the compConcentration (the concentration of the compound), and the expType are the most important variables in this dataset.
+<br><br>
+A typical analysis with this data would be to run a dose-response analysis using a log-logistic model with estimates for the maximal, the minimal, the IC50 concentration and the slope at IC50. We will not go into the details but a good package to run such computations and create graphs in R is the {drc} package.
+<br><br><br>
+Image 1 illustrates the excel file containing the data.
+<br><img src="data/data_raw/001_c_elegans_plate_exp/Untidy_example.png" style="width:100.0%" alt="Untidy_example">
+Image 1: Raw data file containing data about the C. elegans plate experiment.
+<br>
+The file contains four sheets which have had lots of care put into the make-up and are somewhat difficult to read as they are now.
+<br><br>
+Looking at the first five rows of the file:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Read the excel file into a vector and display it in a small table.</span>
+<span class="va">scatter_FLOW.062</span> <span class="op">&lt;-</span> <span class="fu">read_excel</span><span class="op">(</span><span class="st">'data/data_raw/001_c_elegans_plate_exp/CE.LIQ.FLOW.062_Tidydata.xlsx'</span><span class="op">)</span> 
+<span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span> <span class="va">scatter_FLOW.062</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="inline-table"><table style="width:100%;" class="table table-sm">
+<colgroup>
+<col width="1%">
+<col width="2%">
+<col width="1%">
+<col width="1%">
+<col width="2%">
+<col width="2%">
+<col width="3%">
+<col width="2%">
+<col width="6%">
+<col width="1%">
+<col width="1%">
+<col width="3%">
+<col width="1%">
+<col width="2%">
+<col width="5%">
+<col width="3%">
+<col width="1%">
+<col width="2%">
+<col width="3%">
+<col width="2%">
+<col width="2%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="2%">
+<col width="1%">
+<col width="4%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">plateRow</th>
+<th align="left">plateColumn</th>
+<th align="right">vialNr</th>
+<th align="left">dropCode</th>
+<th align="left">expType</th>
+<th align="right">expReplicate</th>
+<th align="left">expName</th>
+<th align="left">expDate</th>
+<th align="left">expResearcher</th>
+<th align="right">expTime</th>
+<th align="left">expUnit</th>
+<th align="right">expVolumeCounted</th>
+<th align="right">RawData</th>
+<th align="left">compCASRN</th>
+<th align="left">compName</th>
+<th align="left">compConcentration</th>
+<th align="left">compUnit</th>
+<th align="left">compDelivery</th>
+<th align="left">compVehicle</th>
+<th align="left">elegansStrain</th>
+<th align="right">elegansInput</th>
+<th align="left">bacterialStrain</th>
+<th align="left">bacterialTreatment</th>
+<th align="right">bacterialOD600</th>
+<th align="right">bacterialConcX</th>
+<th align="right">bacterialVolume</th>
+<th align="left">bacterialVolUnit</th>
+<th align="left">incubationVial</th>
+<th align="right">incubationVolume</th>
+<th align="left">incubationUnit</th>
+<th align="left">incubationMethod</th>
+<th align="right">incubationRPM</th>
+<th align="left">bubble</th>
+<th align="right">incubateTemperature</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">1</td>
+<td align="left">a</td>
+<td align="left">experiment</td>
+<td align="right">3</td>
+<td align="left">CE.LIQ.FLOW.062</td>
+<td align="left">2020-11-30</td>
+<td align="left">Sergio Reijnders - Ellis Herder</td>
+<td align="right">68</td>
+<td align="left">hour</td>
+<td align="right">50</td>
+<td align="right">44</td>
+<td align="left">24157-81-1</td>
+<td align="left">2,6-diisopropylnaphthalene</td>
+<td align="left">4.99</td>
+<td align="left">nM</td>
+<td align="left">Liquid</td>
+<td align="left">controlVehicleA</td>
+<td align="left">N2</td>
+<td align="right">25</td>
+<td align="left">OP50</td>
+<td align="left">heated</td>
+<td align="right">0.743</td>
+<td align="right">8</td>
+<td align="right">300</td>
+<td align="left">ul</td>
+<td align="left">1,5 glass vial</td>
+<td align="right">1000</td>
+<td align="left">ul</td>
+<td align="left">rockroll</td>
+<td align="right">35</td>
+<td align="left">NA</td>
+<td align="right">20</td>
+</tr>
+<tr class="even">
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">1</td>
+<td align="left">b</td>
+<td align="left">experiment</td>
+<td align="right">3</td>
+<td align="left">CE.LIQ.FLOW.062</td>
+<td align="left">2020-11-30</td>
+<td align="left">Sergio Reijnders - Ellis Herder</td>
+<td align="right">68</td>
+<td align="left">hour</td>
+<td align="right">50</td>
+<td align="right">37</td>
+<td align="left">24157-81-1</td>
+<td align="left">2,6-diisopropylnaphthalene</td>
+<td align="left">4.99</td>
+<td align="left">nM</td>
+<td align="left">Liquid</td>
+<td align="left">controlVehicleA</td>
+<td align="left">N2</td>
+<td align="right">25</td>
+<td align="left">OP50</td>
+<td align="left">heated</td>
+<td align="right">0.743</td>
+<td align="right">8</td>
+<td align="right">300</td>
+<td align="left">ul</td>
+<td align="left">1,5 glass vial</td>
+<td align="right">1000</td>
+<td align="left">ul</td>
+<td align="left">rockroll</td>
+<td align="right">35</td>
+<td align="left">NA</td>
+<td align="right">20</td>
+</tr>
+<tr class="odd">
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">1</td>
+<td align="left">c</td>
+<td align="left">experiment</td>
+<td align="right">3</td>
+<td align="left">CE.LIQ.FLOW.062</td>
+<td align="left">2020-11-30</td>
+<td align="left">Sergio Reijnders - Ellis Herder</td>
+<td align="right">68</td>
+<td align="left">hour</td>
+<td align="right">50</td>
+<td align="right">45</td>
+<td align="left">24157-81-1</td>
+<td align="left">2,6-diisopropylnaphthalene</td>
+<td align="left">4.99</td>
+<td align="left">nM</td>
+<td align="left">Liquid</td>
+<td align="left">controlVehicleA</td>
+<td align="left">N2</td>
+<td align="right">25</td>
+<td align="left">OP50</td>
+<td align="left">heated</td>
+<td align="right">0.743</td>
+<td align="right">8</td>
+<td align="right">300</td>
+<td align="left">ul</td>
+<td align="left">1,5 glass vial</td>
+<td align="right">1000</td>
+<td align="left">ul</td>
+<td align="left">rockroll</td>
+<td align="right">35</td>
+<td align="left">NA</td>
+<td align="right">20</td>
+</tr>
+<tr class="even">
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">1</td>
+<td align="left">d</td>
+<td align="left">experiment</td>
+<td align="right">3</td>
+<td align="left">CE.LIQ.FLOW.062</td>
+<td align="left">2020-11-30</td>
+<td align="left">Sergio Reijnders - Ellis Herder</td>
+<td align="right">68</td>
+<td align="left">hour</td>
+<td align="right">50</td>
+<td align="right">47</td>
+<td align="left">24157-81-1</td>
+<td align="left">2,6-diisopropylnaphthalene</td>
+<td align="left">4.99</td>
+<td align="left">nM</td>
+<td align="left">Liquid</td>
+<td align="left">controlVehicleA</td>
+<td align="left">N2</td>
+<td align="right">25</td>
+<td align="left">OP50</td>
+<td align="left">heated</td>
+<td align="right">0.743</td>
+<td align="right">8</td>
+<td align="right">300</td>
+<td align="left">ul</td>
+<td align="left">1,5 glass vial</td>
+<td align="right">1000</td>
+<td align="left">ul</td>
+<td align="left">rockroll</td>
+<td align="right">35</td>
+<td align="left">NA</td>
+<td align="right">20</td>
+</tr>
+<tr class="odd">
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">1</td>
+<td align="left">e</td>
+<td align="left">experiment</td>
+<td align="right">3</td>
+<td align="left">CE.LIQ.FLOW.062</td>
+<td align="left">2020-11-30</td>
+<td align="left">Sergio Reijnders - Ellis Herder</td>
+<td align="right">68</td>
+<td align="left">hour</td>
+<td align="right">50</td>
+<td align="right">41</td>
+<td align="left">24157-81-1</td>
+<td align="left">2,6-diisopropylnaphthalene</td>
+<td align="left">4.99</td>
+<td align="left">nM</td>
+<td align="left">Liquid</td>
+<td align="left">controlVehicleA</td>
+<td align="left">N2</td>
+<td align="right">25</td>
+<td align="left">OP50</td>
+<td align="left">heated</td>
+<td align="right">0.743</td>
+<td align="right">8</td>
+<td align="right">300</td>
+<td align="left">ul</td>
+<td align="left">1,5 glass vial</td>
+<td align="right">1000</td>
+<td align="left">ul</td>
+<td align="left">rockroll</td>
+<td align="right">35</td>
+<td align="left">NA</td>
+<td align="right">20</td>
+</tr>
+</tbody>
+</table></div>
+<p><br><br>
+And the data types of the variables RawData, compName and compConcentration:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Display the data type of select columns</span>
+<span class="va">scatter_FLOW.062</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="va">RawData</span>, <span class="va">compName</span>, <span class="va">compConcentration</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 1 x 3
+##   RawData compName                   compConcentration
+##     &lt;dbl&gt; &lt;chr&gt;                      &lt;chr&gt;            
+## 1      44 2,6-diisopropylnaphthalene 4.99</code></pre>
+<p><br>
+It would be expected that the data types of the columns are dbl, chr and dbl. compConcentration however, has the datatype chr. This means the format was imported incorrectly making it difficult to analyse the data.
+<br><br>
+After transforming the comConcentration column to dbl the data was plotted out in a scatterplot graph with the data for the different compounds on the y-axis (RawData) and the varying concentrations on the x-axis (compConcentration). Each variable got a colour matching the compName and a symbol matching the expType column-values.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Transform the datatype of compConcentration to dbl</span>
+<span class="va">scatter_FLOW.062</span> <span class="op">&lt;-</span> <span class="va">scatter_FLOW.062</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/transform.html">transform</a></span><span class="op">(</span>compConcentration <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/double.html">as.double</a></span><span class="op">(</span><span class="va">compConcentration</span><span class="op">)</span><span class="op">)</span>
+
+<span class="co"># Plotting data using ggplot</span>
+<span class="va">scatter_FLOW.062</span> <span class="op">%&gt;%</span> <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">compConcentration</span>, y <span class="op">=</span> <span class="va">RawData</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu">geom_point</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>colour <span class="op">=</span> <span class="va">compName</span>, shape <span class="op">=</span> <span class="va">expType</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Compound RawData per compound concentration"</span>,
+       caption <span class="op">=</span> <span class="st">"Data supplied by J. Louter (INT/ILC)"</span><span class="op">)</span> </code></pre></div>
+<p><img src="_main_files/figure-html/1.1.d-1.png" width="672"><br>
+Figure 1: Scatterplot displaying the amount of offspring at different concentrations per compound (colour) and experiment type (symbol)
+<br><br>
+Had the data type of the compConcentration column not been changed the following would have happened:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Show example of the wrong graph from unedited .xlsx format by retrieving data</span>
+<span class="va">wrong_scatter_FLOW.062</span> <span class="op">&lt;-</span> <span class="fu">read_excel</span><span class="op">(</span><span class="st">'data/data_raw/001_c_elegans_plate_exp/CE.LIQ.FLOW.062_Tidydata.xlsx'</span><span class="op">)</span>
+
+<span class="co"># Plotting data using ggplot</span>
+<span class="va">wrong_scatter_FLOW.062</span> <span class="op">%&gt;%</span> <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">compConcentration</span>, y <span class="op">=</span> <span class="va">RawData</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu">geom_point</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>colour <span class="op">=</span> <span class="va">compName</span>, shape <span class="op">=</span> <span class="va">expType</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Compound RawData per compound concentration"</span>,
+       caption <span class="op">=</span> <span class="st">"Data supplied by J. Louter (INT/ILC)"</span><span class="op">)</span> </code></pre></div>
+<p><img src="_main_files/figure-html/1.1.e-1.png" width="672"><br>
+Figure 2: Scatterplot displaying the amount of offspring at different concentrations per compound (colour) and experiment type (symbol) with the compConcentration column unchanged.
+<br><br>
+Every concentration is seen as a separate point because the compConcentration column has the ‘chr’ type.
+<br><br>
+The ‘correct’ graph in figure 1 still has to be cleaned up more. This was done by using a log10 transformation on the x-axis to create a more clear graph and by adding jitter to prevent the points in the graph from overlapping.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Plot data using log10 function in ggplot</span>
+<span class="va">scatter_FLOW.062</span> <span class="op">%&gt;%</span> <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">compConcentration</span>, y <span class="op">=</span> <span class="va">RawData</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu">geom_jitter</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>colour <span class="op">=</span> <span class="va">compName</span>, shape <span class="op">=</span> <span class="va">expType</span><span class="op">)</span>, width <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_x_log10</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Compound RawData per compound concentration"</span>,
+       caption <span class="op">=</span> <span class="st">"Data supplied by J. Louter (INT/ILC)"</span><span class="op">)</span> </code></pre></div>
+<p><img src="_main_files/figure-html/1.1.f-1.png" width="672"><br>
+Figure 3: Scatterplot displaying the amount of offspring at different concentrations per compound (colour) and experiment type (symbol) transformed with log10 on the x-axis and added jitter
+<br>
+The positive control for this experiments is ethanol. The negative control for this experiment is S-medium.
+<br><br>
+To analyze this experiment and learn whether there is indeed an effect of different concentrations on offspring count and whether the different compounds have a different curve (IC50) I would take these steps:
+<br>
+- Group the data for every compound. <br>
+- Check if the data is normally distributed. <br>
+- Use the appropriate statistical tests on the data to see if there is a statistically significant effect of different concentrations on the offspring count. <br>
+- Calculate the IC50 and create a plot of the curve. <br><br><br>
+For the next visualization I have normalized the data for the controlNegative in such a way that the mean value for controlNegative is exactly equal to 1 and that all other values are expressed as a fraction thereof.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Calculate the mean of the RawData</span>
+<span class="va">mean_data_FLOW.062</span> <span class="op">&lt;-</span> <span class="va">scatter_FLOW.062</span> <span class="op">%&gt;%</span> 
+  <span class="fu">select</span><span class="op">(</span><span class="va">expType</span>, <span class="va">RawData</span>, <span class="va">compName</span>, <span class="va">compConcentration</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">group_by</span><span class="op">(</span><span class="va">expType</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">expType</span> <span class="op">==</span> <span class="st">'controlNegative'</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">summarise</span><span class="op">(</span>mean_RawData <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">RawData</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> 
+
+<span class="co"># Normalise the RawData using the calculated mean</span>
+<span class="va">normalized_FLOW.062</span> <span class="op">&lt;-</span> <span class="va">scatter_FLOW.062</span> <span class="op">%&gt;%</span> 
+  <span class="fu">select</span><span class="op">(</span><span class="va">expType</span>, <span class="va">compName</span>, <span class="va">compConcentration</span>, <span class="va">RawData</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">mutate</span><span class="op">(</span>RawData_normalized <span class="op">=</span> <span class="va">RawData</span> <span class="op">/</span> <span class="va">mean_data_FLOW.062</span><span class="op">$</span><span class="va">mean_RawData</span><span class="op">)</span>
+
+<span class="co"># Calculate the mean of the normalised data</span>
+<span class="va">mean_normalized_FLOW.062</span> <span class="op">&lt;-</span> <span class="va">normalized_FLOW.062</span> <span class="op">%&gt;%</span> <span class="fu">group_by</span><span class="op">(</span><span class="va">expType</span>, <span class="va">compName</span>, <span class="va">compConcentration</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">summarise</span><span class="op">(</span>mean_RawData_normalized <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">RawData_normalized</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
+<span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">mean_normalized_FLOW.062</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th align="left">expType</th>
+<th align="left">compName</th>
+<th align="right">compConcentration</th>
+<th align="right">mean_RawData_normalized</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">controlNegative</td>
+<td align="left">S-medium</td>
+<td align="right">0.00e+00</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td align="left">controlPositive</td>
+<td align="left">Ethanol</td>
+<td align="right">1.50e+00</td>
+<td align="right">0.5750873</td>
+</tr>
+<tr class="odd">
+<td align="left">controlVehicleA</td>
+<td align="left">Ethanol</td>
+<td align="right">5.00e-01</td>
+<td align="right">1.0690726</td>
+</tr>
+<tr class="even">
+<td align="left">experiment</td>
+<td align="left">2,6-diisopropylnaphthalene</td>
+<td align="right">4.99e-05</td>
+<td align="right">1.0391929</td>
+</tr>
+<tr class="odd">
+<td align="left">experiment</td>
+<td align="left">2,6-diisopropylnaphthalene</td>
+<td align="right">4.99e-04</td>
+<td align="right">0.9670159</td>
+</tr>
+</tbody>
+</table></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Plot the normalised mean using ggplot</span>
+<span class="va">mean_normalized_FLOW.062</span> <span class="op">%&gt;%</span> <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">compConcentration</span>, y <span class="op">=</span> <span class="va">mean_RawData_normalized</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu">geom_jitter</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>colour <span class="op">=</span> <span class="va">compName</span>, shape <span class="op">=</span> <span class="va">expType</span><span class="op">)</span>, width <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Normalized mean compound RawData per compound concentration"</span>,
+       caption <span class="op">=</span> <span class="st">"Data supplied by J. Louter (INT/ILC)"</span><span class="op">)</span> </code></pre></div>
+<p><img src="_main_files/figure-html/1.1.j-1.png" width="672"><br>
+Figure 4: Scatterplot displaying the amount of offspring at different concentrations per compound (colour) and experiment type (symbol) normalized on the negative control.
+<br><br>
+I took this step to get the result in relation to the ‘0 value’ which makes it easier to compare the samples to the “normal” value.</p>
+
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="index.html"><span class="header-section-number">1</span> Introduction</a></div>
+<div class="next"><a href="open-peer-review.html"><span class="header-section-number">3</span> Open Peer Review</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#c.-elegans-plate-experiment"><span class="header-section-number">2</span> C. elegans plate experiment</a></li></ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/DanielRoodzant/dsfb2_workflows_portfolio/blob/master/001_c_elegans_plate_exp.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/DanielRoodzant/dsfb2_workflows_portfolio/edit/master/001_c_elegans_plate_exp.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>R portfolio Daniël Roodzant</strong>" was written by Daniël Roodzant. It was last built on 2022-03-28.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>
