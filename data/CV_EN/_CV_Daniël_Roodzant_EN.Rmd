@@ -31,7 +31,7 @@ MS Office
 <i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="far fa-circle"></i>
 </p>
 <p style="text-align: right;">
-Bash, Perl, R, Rshiny
+Bash, Perl, R, R-shiny
 <i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="far fa-circle"></i><i class="far fa-circle"></i>
 </p>
 <p style="text-align: right;">
@@ -44,7 +44,7 @@ Adaptability
 </p>
 <p style="text-align: right;">
 Leadership
-<i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="far fa-circle"></i>
+<i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="far fa-circle"></i><i class="far fa-circle"></i>
 </p>
 
 ## Languages
@@ -65,7 +65,7 @@ German
 ## Hobby's and interests
 
 <p style="text-align: right;">
-Reading non-fiction books <br>
+Reading books <br>
 Drumming in my spare time <br>
 Going to the gym <br>
 Learning to invest
@@ -77,7 +77,7 @@ Learning to invest
 
 ### Personal profile
 
-I am a driven and eager biotechnological analyst with data-science ambitions. 
+I am a driven and eager biotechnological analyst with data-science experience. 
 I like taking on big issues and immersing myself in why things are as they are.
 Learning new things and improving my knowledge and skills is very important to me.
 
@@ -89,7 +89,7 @@ Specialization Biomolecular Research
 
 Utrecht
 
-Present - sep 2018
+Present - Sep 2018
 
 ### Minor Data Sciences for Biology, Utrecht University of Applied Sciences
 
@@ -97,7 +97,7 @@ Focus: (Big)Data processing using bash and coding in R.
 
 Utrecht
 
-jun 2021 - feb 2021
+Jun 2021 - Feb 2021
 
 -   Project from Princess Maxima Center in which we built an Rshiny app to easily fill in metadata for oncology screening.
 
@@ -107,7 +107,7 @@ Particularities: Graduated cum laude and finished one year earlier.
 
 Amsterdam
 
-jul 2018 - Sep 2015
+Jul 2018 - Sep 2015
 
 ### Senior general secondary education (HAVO), Willem de Zwijger College Bussum
 
@@ -115,9 +115,33 @@ Particularities: No diploma aqcuired
 
 Bussum
 
-jul 2015 - Sep 2010
+Jul 2015 - Sep 2010
 
 ## Professional experience {data-icon="suitcase"}
+
+### Student assistent data steward for VHP4Safety project
+
+Utrecht University of Applied Sciences - Lectorate for Innovative Testing
+
+Utrecht
+
+Present - Jan 2022
+
+::: {.concise}
+-   Data management
+:::
+
+### Intern R-shiny webdeveloper for ONTOX project
+
+Utrecht University of Applied Sciences - Lectorate for Innovative Testing
+
+Utrecht
+
+Present - Sep 2021
+
+::: {.concise}
+-   Developing R-Shiny application for ONTOX project
+:::
 
 ### Sales associate
 
@@ -125,7 +149,7 @@ Dierenwinkel Krans - pet store
 
 Hilversum
 
-Present - Jul 2018
+Sep 2021 - Jul 2018
 
 ::: {.concise}
 -   Advising customers
@@ -138,7 +162,7 @@ University Medical Center
 
 Amsterdam
 
-jun 2018 - Mar 2017
+Jun 2018 - Mar 2017
 
 ::: {.concise}
 -   GCMS
