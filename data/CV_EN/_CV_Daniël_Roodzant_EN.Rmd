@@ -18,10 +18,9 @@ editor_options:
 ## Contact Info {#contact}
 
 -   <i class="fa fa-envelope"></i>
-    [daniel.roodzant\@hotmail.com](mailto:daniel.roodzant@hotmail.com){.email}
+    [daniel.rdznt\@gmail.com](mailto:daniel.rdznt@gmail.com){.email}
 -   <i class="fa fa-github"></i>
-    [github.com/DanielRoodzantHU](https://github.com/DanielRoodzantHU)
--   <i class="fa fa-phone"></i> +31 6 577 788 38
+    [github.com/DanielRoodzant](https://github.com/DanielRoodzant)
 -   More info via email.
 
 ## Skills {#skills}
@@ -140,7 +139,7 @@ Utrecht
 Present - Sep 2021
 
 ::: {.concise}
--   Developing R-Shiny application for ONTOX project
+-   Developing R-Shiny application
 :::
 
 ### Sales associate
@@ -156,7 +155,7 @@ Sep 2021 - Jul 2018
 -   Restocking/ handling cash register
 :::
 
-### Trainee diagnostic- and researchanalist, department endocrinology 
+### Intern diagnostic- and researchanalist, department endocrinology 
 
 University Medical Center
 

@@ -18,10 +18,9 @@ editor_options:
 ## Contact Info {#contact}
 
 -   <i class="fa fa-envelope"></i>
-    [daniel.roodzant\@hotmail.com](mailto:daniel.roodzant@hotmail.com){.email}
+    [daniel.rdznt\@gmail.com](mailto:daniel.rdznt@gmail.com){.email}
 -   <i class="fa fa-github"></i>
-    [github.com/DanielRoodzantHU](https://github.com/DanielRoodzantHU)
--   <i class="fa fa-phone"></i> +31 6 577 788 38
+    [github.com/DanielRoodzant](https://github.com/DanielRoodzant)
 -   Meer informatie via email.
 
 ## Vaardigheden {#skills}
@@ -139,7 +138,7 @@ Utrecht
 Heden - Sep 2021
 
 ::: {.concise}
--   R-shiny applicatie ontwikkelen voor ONTOX project
+-   R-shiny applicatie ontwikkelen
 :::
 
 ### Verkoopmedewerker
