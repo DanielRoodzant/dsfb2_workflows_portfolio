@@ -1,0 +1,21 @@
+---
+bibliography: "data/data_raw/004_projecticum_pmc/bibliography_pmc_proj.bib"
+---
+# Projecticum Princes Maxima Center 
+
+During my education, I followed the minor traject 'Data Science for Biology' at Utrecht University of Applied Science during which I got assigned an externally provided projecticum which, in our case, came from the Princess Maxima Center (PMC) in Utrecht. The projecticum assignment was to create a R-shiny app containing an interactive dashboard that displays the metadata of tests run by researchers from the PMC.<br>
+To create the app our group first had to get familiar with R-shiny. Luckily the internet is full of pages on how to use R-shiny and its many applications. This: [@mst] online course was the biggest help in learning how to use shiny as it walks you through the basics as well as the more advanced parts of shiny. Another great help was this video: [@shntot] containing a tutorial on how to work with R-shiny, and this cheat sheet: [@shncht] containing some useful commands to use for R-shiny.
+<br> <br>
+After learning how to create R-shiny applications it was time to start working on the product. The workflow was organised to be agile and was run through a GitHub project board containing all the tasks needed to complete the product. The tasks were completed in sprints with occasional scrum meetings between the group members. 
+<br> <br>
+When used, the app will ask the user to upload files out of which the application builds an interactive dataframe. The dataframe contains all the data points required for the metadata file and can be modified easily using dropdown menus and power functions to modify entire rows. Another feature was an interactive graph of a 384-well plate in which users can select which wells to exclude from the dataset. Once the user is done filling in the dataframe he or she can press a download button to download a TSV formatted .txt file of the data to store locally.
+<br> <br>
+During the process of creating the dashboard there was frequent contact with the representative from the PMC so he could express his thoughts on the app and the direction it was headed in. This ensured the product would be user friendly for those who would actually use it. 
+
+Other great links on what can be done using R-shiny are: <br>
+Shiny gallery with great apps other people made: [@shngal] <br>
+Great app from the gallery: [@shnpok]
+
+## References
+
+<div id="refs"></div>
