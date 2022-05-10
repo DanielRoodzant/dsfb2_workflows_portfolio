@@ -57,13 +57,41 @@
 <h1>
 <span class="header-section-number">8</span> Looking ahead<a class="anchor" aria-label="anchor" href="#looking-ahead"><i class="fas fa-link"></i></a>
 </h1>
-<p>In 2 years time I want to be working as a data scientist specializing in data engineering. My first big step and also my first big inspiration in regards to bioinformatics and data science is creating this digital portfolio as a result of the minor Data Science For Biology at the University of Applied Science Utrecht. The project for the PMC where I created an R-Shiny dashboard awakened an interest in data engineering, development of software and scriptwriting.
+<p>In 2 years time I want to be working as a data scientist specializing in data engineering. My first big step and also my first big inspiration in regards to bioinformatics and data science is creating this digital portfolio as a result of the minor Data Science For Biology at the University of Applied Science Utrecht. The project for the PMC where I created an R-Shiny dashboard awakened an interest in data engineering, software development and scriptwriting. The experience gained during this minor will be a great way to kick-start a career in data science.
 <br><br>
 The next skill for me to learn would be expanding my coding knowledge wherever necessary. I have already started this by getting online certificates through the <a href="https://www.coursera.org/">Coursera</a> platform. Here, institutes like universities but also Google and IBM offer courses, certificate programs and degrees in a number of fields including data science.
 <br><br>
-One of the courses I participated in is the <a href="https://www.coursera.org/specializations/genomic-data-science?action=enroll">Genomic Data Science</a> specialization including 8 courses covering genomic data science tools, working with Python for genomics and algorithms.
+One of the courses I participated in is the <a href="https://www.coursera.org/specializations/genomic-data-science?action=enroll">Genomic Data Science</a> specialization including 8 courses covering genomic data science tools, working with Python for genomics and algorithms. I chose this particular course because it lines up great with my education in life sciences and data science. It will also give me a good introduction to working with Python which will be greatly beneficial to my career.
 <br><br>
-After signing up Coursera grants you acces to pages containing videos, readings and quizzes divided into weeks with an average workload of 1-2 hours. <br><img src="data/data_raw/007_looking_ahead/coursera_ex1.png" style="width:100.0%" alt="coursera example"><br>
+After signing up, Coursera grants you acces to pages containing videos, readings and quizzes divided into workweeks with an average workload of 1-2 hours per week. <br><img src="data/data_raw/007_looking_ahead/coursera_ex1.png" style="width:100.0%" alt="coursera example"><br>
+Some of the course material, for example, consisted of reading genomes from fasta lines and transforming the genome to its reverse complement:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="looking-ahead.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a function reading genome strings from FASTA lines</span></span>
+<span id="cb20-2"><a href="looking-ahead.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> readGenome(filename):</span>
+<span id="cb20-3"><a href="looking-ahead.html#cb20-3" aria-hidden="true" tabindex="-1"></a>    genome <span class="op">=</span> <span class="st">''</span></span>
+<span id="cb20-4"><a href="looking-ahead.html#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(filename, <span class="st">'r'</span>) <span class="im">as</span> f:</span>
+<span id="cb20-5"><a href="looking-ahead.html#cb20-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> line <span class="kw">in</span> f:</span>
+<span id="cb20-6"><a href="looking-ahead.html#cb20-6" aria-hidden="true" tabindex="-1"></a>            <span class="co"># ignore header line with genome information</span></span>
+<span id="cb20-7"><a href="looking-ahead.html#cb20-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="kw">not</span> line[<span class="dv">0</span>] <span class="op">==</span> <span class="st">'&gt;'</span>:</span>
+<span id="cb20-8"><a href="looking-ahead.html#cb20-8" aria-hidden="true" tabindex="-1"></a>                genome <span class="op">+=</span> line.rstrip()</span>
+<span id="cb20-9"><a href="looking-ahead.html#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> genome</span>
+<span id="cb20-10"><a href="looking-ahead.html#cb20-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-11"><a href="looking-ahead.html#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="co"># use function and view first 25 characters</span></span>
+<span id="cb20-12"><a href="looking-ahead.html#cb20-12" aria-hidden="true" tabindex="-1"></a>genome <span class="op">=</span> readGenome(<span class="st">"data/data_raw/007_looking_ahead/lambda_virus.fa"</span>)</span>
+<span id="cb20-13"><a href="looking-ahead.html#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(genome[<span class="dv">0</span>:<span class="dv">24</span>])</span></code></pre></div>
+<pre><code>## GGGCGGCGACCTCGCGGGTTTTCG</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="looking-ahead.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create function turning genome into its reverse complemnt</span></span>
+<span id="cb22-2"><a href="looking-ahead.html#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> reverseComplement(s):</span>
+<span id="cb22-3"><a href="looking-ahead.html#cb22-3" aria-hidden="true" tabindex="-1"></a>    complement <span class="op">=</span> {<span class="st">'A'</span>: <span class="st">'T'</span>, <span class="st">'C'</span>: <span class="st">'G'</span>, <span class="st">'G'</span>: <span class="st">'C'</span>, <span class="st">'T'</span>: <span class="st">'A'</span>, <span class="st">'N'</span>: <span class="st">'N'</span>}</span>
+<span id="cb22-4"><a href="looking-ahead.html#cb22-4" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> <span class="st">''</span></span>
+<span id="cb22-5"><a href="looking-ahead.html#cb22-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> base <span class="kw">in</span> s:</span>
+<span id="cb22-6"><a href="looking-ahead.html#cb22-6" aria-hidden="true" tabindex="-1"></a>        t <span class="op">=</span> complement[base] <span class="op">+</span> t</span>
+<span id="cb22-7"><a href="looking-ahead.html#cb22-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> t</span>
+<span id="cb22-8"><a href="looking-ahead.html#cb22-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb22-9"><a href="looking-ahead.html#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="co"># use function and view first 25 characters</span></span>
+<span id="cb22-10"><a href="looking-ahead.html#cb22-10" aria-hidden="true" tabindex="-1"></a>genome_reverse <span class="op">=</span> reverseComplement(genome)</span>
+<span id="cb22-11"><a href="looking-ahead.html#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(genome_reverse[<span class="dv">0</span>:<span class="dv">24</span>])</span></code></pre></div>
+<pre><code>## CGTAACCTGTCGGATCACCGGAAA</code></pre>
+<p><br>
 Upon completion of the course and after taking some exams you are presented with a certificate. <br><img src="data/data_raw/007_looking_ahead/coursera_certificate.png" style="width:100.0%" alt="coursera certificate"></p>
 
 </div>
@@ -89,7 +117,7 @@ Upon completion of the course and after taking some exams you are presented with
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>R portfolio Daniël Roodzant</strong>" was written by Daniël Roodzant. It was last built on 2022-03-28.</p>
+    <p>"<strong>R portfolio Daniël Roodzant</strong>" was written by Daniël Roodzant. It was last built on 2022-05-10.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

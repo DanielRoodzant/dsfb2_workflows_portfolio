@@ -34,9 +34,9 @@ library(bslib)
 
 # Introduction
 
-Welcome to my bookdown portfolio. Here I will show you some of the coding skills I have gathered.
-This portfolio has been created with the help of the [drporthelp package](https://github.com/DanielRoodzantHU/drporthelp) which I have built to reduce the repeating of code.
+Welcome to my bookdown portfolio. Here I will Illustrate some of my coding skills in R.
+This portfolio has been created in combination with the [drporthelp package](https://github.com/DanielRoodzant/drporthelp) which I have built to reduce the repeating code.
 
-Lets start with my CV which I have created using the pagedown package in R: <br>
+Also provided is my CV, which I have created using the pagedown package in R: <br>
 For Dutch: [Dutch CV](./data/CV_NL/_CV_Daniël_Roodzant_NL.pdf) <br>
 For English: [English CV](./data/CV_EN/_CV_Daniël_Roodzant_EN.pdf)

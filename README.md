@@ -5,7 +5,7 @@ output:
 ---
 
 # Portfolio Daniël Roodzant
-This repo was created to host my personal data science portfolio in which I demonstrate my experience with coding. 
+This repo was created to host my personal R-portfolio in which I demonstrate my experience with coding. 
 <br> <br> 
 The portfolio will be visualized in the form of a Gitbook containing chapters representing different aquired skillsets. 
 
