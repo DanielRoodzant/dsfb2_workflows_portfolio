@@ -34,6 +34,10 @@ Bash, Perl, R, R-shiny
 <i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="far fa-circle"></i><i class="far fa-circle"></i>
 </p>
 <p style="text-align: right;">
+Python
+<i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="far fa-circle"></i><i class="far fa-circle"></i><i class="far fa-circle"></i>
+</p>
+<p style="text-align: right;">
 Teamwork
 <i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="far fa-circle"></i>
 </p>
@@ -65,9 +69,10 @@ German
 
 <p style="text-align: right;">
 Reading books <br>
-Drumming in my spare time <br>
+Drumming <br>
 Going to the gym <br>
-Learning to invest
+Mountainbiking <br>
+Bouldering 
 </p>
 
 # Main

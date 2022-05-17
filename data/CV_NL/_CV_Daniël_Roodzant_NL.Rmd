@@ -34,6 +34,10 @@ Bash, Perl, R, R-shiny
 <i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="far fa-circle"></i><i class="far fa-circle"></i>
 </p>
 <p style="text-align: right;">
+Python
+<i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="far fa-circle"></i><i class="far fa-circle"></i><i class="far fa-circle"></i>
+</p>
+<p style="text-align: right;">
 Teamwork
 <i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="far fa-circle"></i>
 </p>
@@ -65,9 +69,10 @@ Duits
 
 <p style="text-align: right;">
 Lezen van boeken <br>
-Drummen in mijn vrije tijd <br>
+Drummen <br>
 Sporten in de sportschool <br>
-Leren beleggen
+Mountainbiken <br>
+Boulderen
 </p>
 
 # Main
@@ -76,7 +81,7 @@ Leren beleggen
 
 ### Persoonlijk profiel
 
-Ik ben een gedreven en leergierige biotechnologisch analist met ervaring in data-science. Ik pak graag grote probleemstukken aan en houd ervan om mij te verdiepen in het 'waarom'. Nieuwe dingen leren en mijn kennis en vaardigheden verbeteren vind ik erg belangrijk.
+Ik ben een gedreven en leergierige onderzoeks-analist met ervaring in data-science. Ik pak graag grote probleemstukken aan en houd ervan om mij te verdiepen in het 'waarom'. Nieuwe dingen leren en mijn kennis en vaardigheden verbeteren vind ik erg belangrijk.
 
 ## Onderwijs {data-icon="graduation-cap" data-concise="true"}
 
