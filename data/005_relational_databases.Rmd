@@ -12,9 +12,9 @@ Data Source: <br>
 - [dslabs package](https://www.rdocumentation.org/packages/dslabs/versions/0.7.4)
 <br> <br> 
 Datasets used: <br>
-- [Flu data](./data/data_raw/005_relational_databases/flu_data.csv) <br>
-- [Dengue data](./data/data_raw/005_relational_databases/dengue_data.csv) <br>
-- [gapminder](./data/data_raw/005_relational_databases/gapminder.csv)
+- [Flu data](data_raw/005_relational_databases/flu_data.csv) <br>
+- [Dengue data](data_raw/005_relational_databases/dengue_data.csv) <br>
+- [gapminder](data_raw/005_relational_databases/gapminder.csv)
 <br>
 
 ## Cleaning up 
@@ -25,8 +25,10 @@ The next section will show how this was achieved:
 <br>
 ```{r tidyup, message = FALSE, warning = FALSE}
 # Load the datasets into R datframes
-flu_data <- read.csv('data/data_raw/005_relational_databases/flu_data.csv', skip = 11) %>% as_tibble()
-dengue_data <- read.csv("data/data_raw/005_relational_databases/dengue_data.csv", skip = 11) %>% as_tibble()
+flu_data <- utils::read.csv(here::here("data/data_raw/005_relational_databases/flu_data.csv"), skip = 11) %>%
+                              dplyr::as_tibble()
+dengue_data <- utils::read.csv(here::here("data/data_raw/005_relational_databases/dengue_data.csv"), skip = 11) %>%
+                                 dplyr::as_tibble()
 gapminder <- dslabs::gapminder %>% as_tibble()
 
 # Tidy the flu_data and dengue_data datasets
@@ -42,16 +44,16 @@ dengue_data <- dengue_data %>%
                       )
 
 # Match the column types of the datasets
-flu_data <- coltrans(flu_data)
-dengue_data <- coltrans(dengue_data)
+# The coltrans() function is from the drporthelp package that was created for this portfolio
+flu_data <- drporthelp::coltrans(flu_data)
+dengue_data <- drporthelp::coltrans(dengue_data)
 
 gapminder <- gapminder %>%
-  transform(year = as.character(year))
+  base::transform(year = as.character(year))
 
 # Filter gapminder to contain only the years present in the flu and dengue dataseets
 gapminder <- gapminder %>% 
-  filter(year %in% c(2002:2015)
-         )
+  dplyr::filter(year %in% c(2002:2015))
 ```
 
 ## Using DBeaver SQL 
@@ -60,23 +62,23 @@ Following the cleaning of the data, the datasets need to be saved in R and uploa
 <br>
 ```{r DBeaver saving, eval = FALSE}
 #Save the data in .csv and .rds files
-write.csv(flu_data, "data/data_raw/005_relational_databases/flu_data_tidy.csv")
-write.csv(dengue_data, "data/data_raw/005_relational_databases/dengue_data_tidy.csv")
-write.csv(gapminder, "data/data_raw/005_relational_databases/gapminder.csv")
-write_rds(flu_data, "data/data_raw/005_relational_databases/flu_data_tidy.rds")
-write_rds(dengue_data, "data/data_raw/005_relational_databases/dengue_data_tidy.rds")
-write_rds(gapminder, "data/data_raw/005_relational_databases/gapminder.rds")
+utils::write.csv(flu_data, "data/data_raw/005_relational_databases/flu_data_tidy.csv")
+utils::write.csv(dengue_data, "data/data_raw/005_relational_databases/dengue_data_tidy.csv")
+utils::write.csv(gapminder, "data/data_raw/005_relational_databases/gapminder.csv")
+readr::write_rds(flu_data, "data/data_raw/005_relational_databases/flu_data_tidy.rds")
+readr::write_rds(dengue_data, "data/data_raw/005_relational_databases/dengue_data_tidy.rds")
+readr::write_rds(gapminder, "data/data_raw/005_relational_databases/gapminder.rds")
 
-#Upload the data to DBeaver
-dbWriteTable(con, "flu_data",
+#Upload the data to DBeaver, con = the DBeaver connection created using the DBI::dbConnect() function
+DBI::dbWriteTable(con, "flu_data",
              flu_data,
              overwrite = TRUE
               )
-dbWriteTable(con, "dengue_data",
+DBI::dbWriteTable(con, "dengue_data",
              dengue_data,
              overwrite = TRUE
               )
-dbWriteTable(con, "gapminder",
+DBI::dbWriteTable(con, "gapminder",
              gapminder,
              overwrite = TRUE
               )
@@ -84,10 +86,10 @@ dbWriteTable(con, "gapminder",
 <br>
 Uploading files into DBeaver can come in handy to do things like: <br>
 Using the SQL shell to obtain some information about the data in the tables <br>
-![SQLshell](./data/data_raw/005_relational_databases/sql_shell.png){width=100%}
+![SQLshell](data_raw/005_relational_databases/sql_shell.png){width=100%}
 <br>
 Using the console to get information from the data
-![DBeaverexample](data/data_raw/005_relational_databases/DBeaver_example.png){width=100%}
+![DBeaverexample](data_raw/005_relational_databases/DBeaver_example.png){width=100%}
 
 ## Joining the data 
 
@@ -96,19 +98,20 @@ The Data needs to be joined together to make good informative figures. The next 
 <br>
 ```{r join tables, message = FALSE, warning = FALSE}
 # Make the data tables joinable
-flu_data <- datatrans(flu_data)
-dengue_data <- datatrans(dengue_data)
+# The datatrans() function is from the drporthelp package that was created for this portfolio
+flu_data <- drporthelp::datatrans(flu_data)
+dengue_data <- drporthelp::datatrans(dengue_data)
 
 # Join the data tables
-flu_dengue_data <- full_join(flu_data, 
-                             dengue_data, 
-                             by = c("country", "year"), 
-                             suffix = c("_flu", "_dengue")
-                             )
-gap_flu_dengue_data <- inner_join(flu_dengue_data, 
-                                 gapminder, 
-                                 by = c("country", "year")
-                                 )
+flu_dengue_data <- dplyr::full_join(flu_data, 
+                                    dengue_data, 
+                                    by = c("country", "year"), 
+                                    suffix = c("_flu", "_dengue")
+                                    )
+gap_flu_dengue_data <- dplyr::inner_join(flu_dengue_data, 
+                                         gapminder, 
+                                         by = c("country", "year")
+                                         )
 knitr::kable(gap_flu_dengue_data %>% head(5))
 ```
 
@@ -120,7 +123,8 @@ First by plotting the occurrences of flu and dengue per region to see if they ar
 <br> 
 ```{r data visualisation 1, message = FALSE, warning = FALSE}
 # plot occurrences of flu and dengue per region
-flu_region <- gap_flu_dengue_data %>% ggplot() + 
+flu_region <- gap_flu_dengue_data %>% 
+  ggplot2::ggplot() + 
   geom_col(aes(x = region, 
                y = searches_flu,
                fill = region)
@@ -134,7 +138,8 @@ flu_region <- gap_flu_dengue_data %>% ggplot() +
        y = "Searches"
        )
 
-dengue_region <- gap_flu_dengue_data %>% ggplot() + 
+dengue_region <- gap_flu_dengue_data %>% 
+  ggplot2::ggplot() + 
   geom_col(aes(x = region, 
                y = searches_dengue,
                fill = region)
@@ -148,7 +153,7 @@ dengue_region <- gap_flu_dengue_data %>% ggplot() +
        y = "Searches"
        )
 
-grid.arrange(flu_region, dengue_region, nrow = 1)
+gridExtra::grid.arrange(flu_region, dengue_region, nrow = 1)
 ```
 <br>
 The data shows that dengue is most common in South America and South-Eastern Asia. It also has some presence in Central America and Southern Asia but not so much in other regions.
@@ -160,8 +165,8 @@ The second graph will portray the occurrences of flu and dengue in the Netherlan
 ```{r data visualisation 2, message = FALSE, warning = FALSE}
 # plot occurrences of flu and dengue in the Netherlands by year
 flu_region <- gap_flu_dengue_data %>% 
-  filter(country == "Netherlands") %>% 
-  ggplot() + 
+  dplyr::filter(country == "Netherlands") %>% 
+  ggplot2::ggplot() + 
   geom_col(aes(x = year, 
                y = searches_flu,
                fill = year)
@@ -176,8 +181,8 @@ flu_region <- gap_flu_dengue_data %>%
        )
 
 dengue_region <- gap_flu_dengue_data %>% 
-  filter(country == "Netherlands") %>%
-  ggplot() + 
+  dplyr::filter(country == "Netherlands") %>%
+  ggplot2::ggplot() + 
   geom_col(aes(x = year, 
                y = searches_dengue,
                fill = year)
@@ -191,7 +196,7 @@ dengue_region <- gap_flu_dengue_data %>%
        y = "Searches"
        )
 
-grid.arrange(flu_region, dengue_region, nrow = 1)
+gridExtra::grid.arrange(flu_region, dengue_region, nrow = 1)
 ```
 <br> 
 The flu had its most occurrences in 2009 and 2013 and its least in 2004 and 2010. There is no flu data for 2002 and 2003. This could be because of a lack of data in these years. <br>
@@ -201,7 +206,8 @@ The third and last graph will show the worldwide occurrences of flu and dengue o
 <br>
 ```{r data visualisation 3, message = FALSE, warning = FALSE}
 # plot occurrences of flu and dengue per year
-flu_region <- gap_flu_dengue_data %>% ggplot() + 
+flu_region <- gap_flu_dengue_data %>% 
+  ggplot2::ggplot() + 
   geom_col(aes(x = year, 
                y = searches_flu,
                fill = year)
@@ -215,7 +221,8 @@ flu_region <- gap_flu_dengue_data %>% ggplot() +
        y = "Searches"
        )
 
-dengue_region <- gap_flu_dengue_data %>% ggplot() + 
+dengue_region <- gap_flu_dengue_data %>% 
+  ggplot2::ggplot() + 
   geom_col(aes(x = year, 
                y = searches_dengue,
                fill = year)
@@ -229,7 +236,7 @@ dengue_region <- gap_flu_dengue_data %>% ggplot() +
        y = "Searches"
        )
 
-grid.arrange(flu_region, dengue_region, nrow = 1)
+gridExtra::grid.arrange(flu_region, dengue_region, nrow = 1)
 ```
 <br>
 The Flu had its most occurrences in 2009, same as in the Netherlands as shown in the previous graph. The least occurrences were in 2002, 2003 and 2004. This could be because of a lack of data in these years. The rest of the datapoints show only minor peaks. <br>

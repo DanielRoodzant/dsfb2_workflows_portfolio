@@ -19,23 +19,25 @@ new_session: yes
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-library(tidyverse)
-library(readxl) 
-library(lubridate)
-library(fs)
-library(dslabs)
-library(here)
-library(htmltools)
-library(gridExtra)
+library(bslib)
+library(DBI)
 library(devtools)
 library(drporthelp)
-library(bslib)
+library(dslabs)
+library(fs)
+library(gridExtra)
+library(here)
+library(htmltools)
+library(lubridate)
+library(readxl) 
+library(tidyverse)
+library(utils)
 ```
 
 # Introduction
 
 Welcome to my bookdown portfolio. Here I will Illustrate some of my coding skills in R.
-This portfolio has been created in combination with the [drporthelp package](https://github.com/DanielRoodzant/drporthelp) which I have built to reduce the repeating code.
+This portfolio has been created in combination with the [drporthelp package](https://github.com/DanielRoodzant/drporthelp) which I have built to reduce some repeating code and show some experience in creating packages.
 
 Also provided is my CV, which I have created using the pagedown package in R: <br>
 For Dutch: [Dutch CV](./data/CV_NL/_CV_Daniël_Roodzant_NL.pdf) <br>

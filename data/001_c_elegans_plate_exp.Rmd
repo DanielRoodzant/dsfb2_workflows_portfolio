@@ -16,29 +16,24 @@ The file contains four sheets which have had lots of care put into the make-up a
 To have a look at the first five rows of the file the data is retrieved through the following R-code:
 ```{r 1.1.b, message = FALSE, warning = FALSE}
 # Read the excel file into a vector and display it in a small table.
-scatter_FLOW.062 <- read_excel('data/data_raw/001_c_elegans_plate_exp/CE.LIQ.FLOW.062_Tidydata.xlsx') 
+scatter_FLOW.062 <- readxl::read_excel(here::here("data/data_raw/001_c_elegans_plate_exp/CE.LIQ.FLOW.062_Tidydata.xlsx")) 
 knitr::kable(scatter_FLOW.062 %>% head(5))
 ```
 <br> 
 And the data types of the variables RawData, compName and compConcentration:
 ```{r 1.1.c, message=FALSE, warning=FALSE}
 # Display the data type of select columns
-scatter_FLOW.062 %>% select(RawData, compName, compConcentration) %>% head(1)
+scatter_FLOW.062 %>% dplyr::select(RawData, compName, compConcentration) %>% utils::head(1)
 ```
 It would be expected that the data types of the columns are dbl, chr and dbl. compConcentration however, has the datatype chr. This means the format was imported incorrectly making it difficult to analyse the data.
 <br> <br>
 The following code transforms the comConcentration column to dbl and plots the data in a scatterplot graph with the data for the different compounds on the y-axis (RawData) and the varying concentrations on the x-axis (compConcentration). Each variable has a colour matching the compName and a symbol matching the expType column-values.
 ```{r 1.1.d, message = FALSE, warning = FALSE}
 # Transform the datatype of compConcentration to dbl
-scatter_FLOW.062 <- scatter_FLOW.062 %>% transform(compConcentration = as.double(compConcentration))
+scatter_FLOW.062 <- scatter_FLOW.062 %>% base::transform(compConcentration = base::as.double(compConcentration))
 
-# Plotting data using ggplot
-scatter_FLOW.062 %>% ggplot(aes(x = compConcentration, y = RawData)) + 
-  geom_point(aes(colour = compName, shape = expType)) + 
-  labs(title = "Compound RawData per compound concentration",
-       caption = "Data supplied by J. Louter (INT/ILC)") +
-  xlab("Concentration (nM)") +
-  ylab("Number of offspring (n)")
+# Plotting data using ggplot through a function in drporthelp
+scatter_FLOW.062 %>% drporthelp::plot_data()
 ```
 <br>
 <font size="2">
@@ -48,15 +43,10 @@ Figure 1: Scatterplot displaying the amount of offspring at different concentrat
 Had the data type of the compConcentration column not been changed the following would have happened:
 ```{r 1.1.e, message = FALSE, warning = FALSE}
 # Show example of the wrong graph from unedited .xlsx format by retrieving data
-wrong_scatter_FLOW.062 <- read_excel('data/data_raw/001_c_elegans_plate_exp/CE.LIQ.FLOW.062_Tidydata.xlsx')
+wrong_scatter_FLOW.062 <- readxl::read_excel(here::here("data/data_raw/001_c_elegans_plate_exp/CE.LIQ.FLOW.062_Tidydata.xlsx"))
 
-# Plotting data using ggplot
-wrong_scatter_FLOW.062 %>% ggplot(aes(x = compConcentration, y = RawData)) + 
-  geom_point(aes(colour = compName, shape = expType)) + 
-  labs(title = "Compound RawData per compound concentration",
-       caption = "Data supplied by J. Louter (INT/ILC)") +
-  xlab("Concentration (nM)") +
-  ylab("Number of offspring (n)")
+# Plotting data using ggplot through a function in drporthelp
+wrong_scatter_FLOW.062 %>% drporthelp::plot_data()
 ```
 <br>
 <font size="2">
@@ -68,7 +58,7 @@ Every concentration is seen as a separate point because the compConcentration co
 The 'correct' graph in figure 1 still has to be cleaned up more. This was done by using a log10 transformation on the x-axis to create a more clear graph and by adding jitter to prevent the points in the graph from overlapping:
 ```{r 1.1.f, message = FALSE, warning = FALSE}
 # Plot data using log10 function in ggplot
-scatter_FLOW.062 %>% ggplot(aes(x = compConcentration, y = RawData)) + 
+scatter_FLOW.062 %>% ggplot2::ggplot(aes(x = compConcentration, y = RawData)) + 
   geom_point() + 
   geom_jitter(aes(colour = compName, shape = expType), width = 0.5) +
   scale_x_log10() +
@@ -94,24 +84,21 @@ Analyzing this experiment to learn whether there is indeed an effect of differen
 In the next visualization the data has been normalized for the 'controlNegative' in such a way that the mean value for controlNegative is exactly equal to 1 and that all other values are expressed as a fraction thereof. 
 ```{r 1.1.j, message = FALSE, warning = FALSE}
 # Calculate the mean of the RawData
-mean_data_FLOW.062 <- scatter_FLOW.062 %>% 
-  select(expType, RawData, compName, compConcentration) %>% 
-  group_by(expType) %>% 
-  filter(expType == 'controlNegative') %>% 
-  summarise(mean_RawData = mean(RawData, na.rm = TRUE)) 
+mean_data_FLOW.062 <- scatter_FLOW.062 %>% mean_data()
 
 # Normalise the RawData using the calculated mean
 normalized_FLOW.062 <- scatter_FLOW.062 %>% 
-  select(expType, compName, compConcentration, RawData) %>%
-  mutate(RawData_normalized = RawData / mean_data_FLOW.062$mean_RawData)
+  dplyr::select(expType, compName, compConcentration, RawData) %>%
+  dplyr::mutate(RawData_normalized = RawData / mean_data_FLOW.062$mean_RawData)
 
 # Calculate the mean of the normalised data
-mean_normalized_FLOW.062 <- normalized_FLOW.062 %>% group_by(expType, compName, compConcentration) %>%
-  summarise(mean_RawData_normalized = mean(RawData_normalized, na.rm = TRUE))
+mean_normalized_FLOW.062 <- normalized_FLOW.062 %>% 
+  dplyr::group_by(expType, compName, compConcentration) %>%
+  dplyr::summarise(mean_RawData_normalized = base::mean(RawData_normalized, na.rm = TRUE))
 knitr::kable(mean_normalized_FLOW.062 %>% head(5))
 
 # Plot the normalised mean using ggplot
-mean_normalized_FLOW.062 %>% ggplot(aes(x = compConcentration, y = mean_RawData_normalized)) + 
+mean_normalized_FLOW.062 %>% ggplot2::ggplot(aes(x = compConcentration, y = mean_RawData_normalized)) + 
   geom_point() + 
   geom_jitter(aes(colour = compName, shape = expType), width = 0.5) +
   labs(title = "Normalized mean compound RawData per compound concentration",

@@ -1,5 +1,5 @@
 ---
-bibliography: "data/data_raw/004_projecticum_pmc/bibliography_pmc_proj.bib"
+bibliography: "data_raw/004_projecticum_pmc/bibliography_pmc_proj.bib"
 ---
 # Projecticum Princes Maxima Center 
 

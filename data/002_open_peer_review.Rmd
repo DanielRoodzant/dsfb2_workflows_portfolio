@@ -4,7 +4,7 @@ This exercise is about identifying reproducibility issues in a scientific public
 <br>
 ```{r read criteria table, echo=FALSE}
 #load table containing criteria
-knitr::kable(read_excel("data/data_raw/002_open_peer_review/reproducibility_criteria.xlsx"), 
+knitr::kable(readxl::read_excel(here::here("data/data_raw/002_open_peer_review/reproducibility_criteria.xlsx")), 
              align = 'c', 
              caption = "Reproducibility criteria"
              )
@@ -35,7 +35,7 @@ This project is [Bats and COVID-19](https://osf.io/wxh6a/)
 The code in this project intends to compare the search words 'coronavirus' and 'bats' through Google and wikipedia in multiple countries and score how often they were used together. <br>
 The readability of the code is roughly a 4/5. 
 <br>
-Click [here](data/data_raw/002_open_peer_review/bats_and_covid.R) to see the full code from the article.
+Click [here](data_raw/002_open_peer_review/bats_and_covid.R) to see the full code from the article.
 <br> <br> 
 A reproduction of some of the code: 
 <br>
@@ -44,7 +44,7 @@ A reproduction of some of the code:
 # Fig.1 (2016-2020 US Tv news about bats) 
 {
   tv.dat <- 
-      read.csv(file="data/data_raw/002_open_peer_review/GDELTBatsUS1620.csv")
+      read.csv(file=here::here("data/data_raw/002_open_peer_review/GDELTBatsUS1620.csv"))
   tv.dat$date <- ymd(tv.dat$date)
   tv.dat[61, "date"] <- "2021-01-01"
   tv.dat[61, "value"] <- NA

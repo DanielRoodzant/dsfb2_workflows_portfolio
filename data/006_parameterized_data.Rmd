@@ -12,10 +12,10 @@ Information about the data can be found [here](https://www.ecdc.europa.eu/sites/
 # Filter the data. The first and last line change the date format so the first column can be specified as such
 lct <- Sys.getlocale("LC_TIME"); Sys.setlocale("LC_TIME", "C")
 
-data(list = params$data)
-covid_data <- read_csv(params$data)
+utils::data(list = params$data)
+covid_data <- readr::read_csv(params$data)
 covid_data_filtered <- covid_data %>% 
-  filter(countriesAndTerritories %in% "Netherlands") %>% 
+  dplyr::filter(countriesAndTerritories %in% "Netherlands") %>% 
   transform(dateRep = as_date(dateRep, format = "%d/%m/%Y")
             )
 
@@ -25,7 +25,7 @@ Sys.setlocale("LC_TIME", lct)
 ```
 ```{r creating graphs, message = FALSE, warning = FALSE}
 # Make ggplot containing covid cases and deaths in the Netherlands during period Jan 2021 to May 2021
-cases <- covid_data_filtered %>% ggplot(aes(x = dateRep, y = cases)) +
+cases <- covid_data_filtered %>% ggplot2::ggplot(aes(x = dateRep, y = cases)) +
   geom_line(colour = "blue", size = 2) +
   theme(legend.position = "none") +
     labs(title = "COVID-19 cases in the Netherlands", 
@@ -34,7 +34,7 @@ cases <- covid_data_filtered %>% ggplot(aes(x = dateRep, y = cases)) +
        y = "Cases"
        )
 
-deaths <- covid_data_filtered %>% ggplot(aes(x = dateRep, y = deaths)) +
+deaths <- covid_data_filtered %>% ggplot2::ggplot(aes(x = dateRep, y = deaths)) +
   geom_line(colour = "red", size = 2) +
   theme(legend.position = "none") +
     labs(title = "COVID-19 deaths in the Netherlands", 

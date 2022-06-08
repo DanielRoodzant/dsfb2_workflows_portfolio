@@ -87,7 +87,7 @@ Ik ben een gedreven en leergierige onderzoeks-analist met ervaring in data-scien
 
 ### B-Life Sciences, Hogeschool Utrecht
 
-Specialitsatie Biomolecular Research
+Specialitsatie Bioinformatica/ Biomolecular Research
 
 Utrecht
 
@@ -101,7 +101,7 @@ Utrecht
 
 Jun 2021 - Feb 2021
 
--   Project van Princes Macima Centrum om Rshiny app te bouwen voor invullen metadata oncologie screening.
+-   Project van Princes Maxima Centrum om Rshiny app te bouwen voor invullen metadata oncologie screening.
 
 ### Biotechnologisch Analist niveau 4, ROC van Amsterdam
 
