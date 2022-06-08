@@ -62,7 +62,7 @@
 A typical analysis with this data would be to run a dose-response analysis using a log-logistic model with estimates for the maximal, the minimal, the IC50 concentration and the slope at IC50. We will not go into the details but a good package to run such computations and create graphs in R is the {drc} package.
 <br><br>
 Image 1 illustrates the excel file containing the data.
-<br><img src="data/data_raw/001_c_elegans_plate_exp/Untidy_example.png" style="width:100.0%" alt="Untidy_example"><font size="2">
+<br><img src="./data/data_raw/001_c_elegans_plate_exp/Untidy_example.png" style="width:100.0%" alt="Untidy_example"><font size="2">
 Image 1: Raw data file containing data about the C. elegans plate experiment.
 </font>
 <br><br>
@@ -71,7 +71,7 @@ The file contains four sheets which have had lots of care put into the make-up a
 To have a look at the first five rows of the file the data is retrieved through the following R-code:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Read the excel file into a vector and display it in a small table.</span>
-<span class="va">scatter_FLOW.062</span> <span class="op">&lt;-</span> <span class="fu">read_excel</span><span class="op">(</span><span class="st">'data/data_raw/001_c_elegans_plate_exp/CE.LIQ.FLOW.062_Tidydata.xlsx'</span><span class="op">)</span> 
+<span class="va">scatter_FLOW.062</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"data/data_raw/001_c_elegans_plate_exp/CE.LIQ.FLOW.062_Tidydata.xlsx"</span><span class="op">)</span><span class="op">)</span> 
 <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">scatter_FLOW.062</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="inline-table"><table style="width:100%;" class="table table-sm">
 <colgroup>
@@ -333,7 +333,7 @@ To have a look at the first five rows of the file the data is retrieved through 
 And the data types of the variables RawData, compName and compConcentration:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Display the data type of select columns</span>
-<span class="va">scatter_FLOW.062</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="va">RawData</span>, <span class="va">compName</span>, <span class="va">compConcentration</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></code></pre></div>
+<span class="va">scatter_FLOW.062</span> <span class="op">%&gt;%</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">RawData</span>, <span class="va">compName</span>, <span class="va">compConcentration</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 3
 ##   RawData compName                   compConcentration
 ##     &lt;dbl&gt; &lt;chr&gt;                      &lt;chr&gt;            
@@ -343,15 +343,10 @@ And the data types of the variables RawData, compName and compConcentration:</p>
 The following code transforms the comConcentration column to dbl and plots the data in a scatterplot graph with the data for the different compounds on the y-axis (RawData) and the varying concentrations on the x-axis (compConcentration). Each variable has a colour matching the compName and a symbol matching the expType column-values.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Transform the datatype of compConcentration to dbl</span>
-<span class="va">scatter_FLOW.062</span> <span class="op">&lt;-</span> <span class="va">scatter_FLOW.062</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/transform.html">transform</a></span><span class="op">(</span>compConcentration <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/double.html">as.double</a></span><span class="op">(</span><span class="va">compConcentration</span><span class="op">)</span><span class="op">)</span>
+<span class="va">scatter_FLOW.062</span> <span class="op">&lt;-</span> <span class="va">scatter_FLOW.062</span> <span class="op">%&gt;%</span> <span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/transform.html">transform</a></span><span class="op">(</span>compConcentration <span class="op">=</span> <span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/double.html">as.double</a></span><span class="op">(</span><span class="va">compConcentration</span><span class="op">)</span><span class="op">)</span>
 
-<span class="co"># Plotting data using ggplot</span>
-<span class="va">scatter_FLOW.062</span> <span class="op">%&gt;%</span> <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">compConcentration</span>, y <span class="op">=</span> <span class="va">RawData</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu">geom_point</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>colour <span class="op">=</span> <span class="va">compName</span>, shape <span class="op">=</span> <span class="va">expType</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Compound RawData per compound concentration"</span>,
-       caption <span class="op">=</span> <span class="st">"Data supplied by J. Louter (INT/ILC)"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">xlab</span><span class="op">(</span><span class="st">"Concentration (nM)"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">ylab</span><span class="op">(</span><span class="st">"Number of offspring (n)"</span><span class="op">)</span></code></pre></div>
+<span class="co"># Plotting data using ggplot through a function in drporthelp</span>
+<span class="va">scatter_FLOW.062</span> <span class="op">%&gt;%</span> <span class="fu">drporthelp</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/drporthelp/man/plot_data.html">plot_data</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p><img src="_main_files/figure-html/1.1.d-1.png" width="672"><br><font size="2">
 Figure 1: Scatterplot displaying the amount of offspring at different concentrations in nM per compound (colour) and experiment type (symbol).
 </font>
@@ -359,15 +354,10 @@ Figure 1: Scatterplot displaying the amount of offspring at different concentrat
 Had the data type of the compConcentration column not been changed the following would have happened:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Show example of the wrong graph from unedited .xlsx format by retrieving data</span>
-<span class="va">wrong_scatter_FLOW.062</span> <span class="op">&lt;-</span> <span class="fu">read_excel</span><span class="op">(</span><span class="st">'data/data_raw/001_c_elegans_plate_exp/CE.LIQ.FLOW.062_Tidydata.xlsx'</span><span class="op">)</span>
+<span class="va">wrong_scatter_FLOW.062</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"data/data_raw/001_c_elegans_plate_exp/CE.LIQ.FLOW.062_Tidydata.xlsx"</span><span class="op">)</span><span class="op">)</span>
 
-<span class="co"># Plotting data using ggplot</span>
-<span class="va">wrong_scatter_FLOW.062</span> <span class="op">%&gt;%</span> <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">compConcentration</span>, y <span class="op">=</span> <span class="va">RawData</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu">geom_point</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>colour <span class="op">=</span> <span class="va">compName</span>, shape <span class="op">=</span> <span class="va">expType</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Compound RawData per compound concentration"</span>,
-       caption <span class="op">=</span> <span class="st">"Data supplied by J. Louter (INT/ILC)"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">xlab</span><span class="op">(</span><span class="st">"Concentration (nM)"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">ylab</span><span class="op">(</span><span class="st">"Number of offspring (n)"</span><span class="op">)</span></code></pre></div>
+<span class="co"># Plotting data using ggplot through a function in drporthelp</span>
+<span class="va">wrong_scatter_FLOW.062</span> <span class="op">%&gt;%</span> <span class="fu">drporthelp</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/drporthelp/man/plot_data.html">plot_data</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p><img src="_main_files/figure-html/1.1.e-1.png" width="672"><br><font size="2">
 Figure 2: Scatterplot displaying the amount of offspring at different concentrations in nM per compound (colour) and experiment type (symbol) with the compConcentration column unchanged.
 </font>
@@ -377,7 +367,7 @@ Every concentration is seen as a separate point because the compConcentration co
 The ‘correct’ graph in figure 1 still has to be cleaned up more. This was done by using a log10 transformation on the x-axis to create a more clear graph and by adding jitter to prevent the points in the graph from overlapping:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Plot data using log10 function in ggplot</span>
-<span class="va">scatter_FLOW.062</span> <span class="op">%&gt;%</span> <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">compConcentration</span>, y <span class="op">=</span> <span class="va">RawData</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+<span class="va">scatter_FLOW.062</span> <span class="op">%&gt;%</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">compConcentration</span>, y <span class="op">=</span> <span class="va">RawData</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu">geom_jitter</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>colour <span class="op">=</span> <span class="va">compName</span>, shape <span class="op">=</span> <span class="va">expType</span><span class="op">)</span>, width <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">scale_x_log10</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
@@ -401,20 +391,17 @@ Analyzing this experiment to learn whether there is indeed an effect of differen
 In the next visualization the data has been normalized for the ‘controlNegative’ in such a way that the mean value for controlNegative is exactly equal to 1 and that all other values are expressed as a fraction thereof.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Calculate the mean of the RawData</span>
-<span class="va">mean_data_FLOW.062</span> <span class="op">&lt;-</span> <span class="va">scatter_FLOW.062</span> <span class="op">%&gt;%</span> 
-  <span class="fu">select</span><span class="op">(</span><span class="va">expType</span>, <span class="va">RawData</span>, <span class="va">compName</span>, <span class="va">compConcentration</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">group_by</span><span class="op">(</span><span class="va">expType</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">expType</span> <span class="op">==</span> <span class="st">'controlNegative'</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">summarise</span><span class="op">(</span>mean_RawData <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">RawData</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> 
+<span class="va">mean_data_FLOW.062</span> <span class="op">&lt;-</span> <span class="va">scatter_FLOW.062</span> <span class="op">%&gt;%</span> <span class="fu">mean_data</span><span class="op">(</span><span class="op">)</span>
 
 <span class="co"># Normalise the RawData using the calculated mean</span>
 <span class="va">normalized_FLOW.062</span> <span class="op">&lt;-</span> <span class="va">scatter_FLOW.062</span> <span class="op">%&gt;%</span> 
-  <span class="fu">select</span><span class="op">(</span><span class="va">expType</span>, <span class="va">compName</span>, <span class="va">compConcentration</span>, <span class="va">RawData</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">mutate</span><span class="op">(</span>RawData_normalized <span class="op">=</span> <span class="va">RawData</span> <span class="op">/</span> <span class="va">mean_data_FLOW.062</span><span class="op">$</span><span class="va">mean_RawData</span><span class="op">)</span>
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">expType</span>, <span class="va">compName</span>, <span class="va">compConcentration</span>, <span class="va">RawData</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>RawData_normalized <span class="op">=</span> <span class="va">RawData</span> <span class="op">/</span> <span class="va">mean_data_FLOW.062</span><span class="op">$</span><span class="va">mean_RawData</span><span class="op">)</span>
 
 <span class="co"># Calculate the mean of the normalised data</span>
-<span class="va">mean_normalized_FLOW.062</span> <span class="op">&lt;-</span> <span class="va">normalized_FLOW.062</span> <span class="op">%&gt;%</span> <span class="fu">group_by</span><span class="op">(</span><span class="va">expType</span>, <span class="va">compName</span>, <span class="va">compConcentration</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">summarise</span><span class="op">(</span>mean_RawData_normalized <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">RawData_normalized</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
+<span class="va">mean_normalized_FLOW.062</span> <span class="op">&lt;-</span> <span class="va">normalized_FLOW.062</span> <span class="op">%&gt;%</span> 
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">expType</span>, <span class="va">compName</span>, <span class="va">compConcentration</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mean_RawData_normalized <span class="op">=</span> <span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">RawData_normalized</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
 <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">mean_normalized_FLOW.062</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
 <thead><tr class="header">
@@ -458,7 +445,7 @@ In the next visualization the data has been normalized for the ‘controlNegativ
 </table></div>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Plot the normalised mean using ggplot</span>
-<span class="va">mean_normalized_FLOW.062</span> <span class="op">%&gt;%</span> <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">compConcentration</span>, y <span class="op">=</span> <span class="va">mean_RawData_normalized</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+<span class="va">mean_normalized_FLOW.062</span> <span class="op">%&gt;%</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">compConcentration</span>, y <span class="op">=</span> <span class="va">mean_RawData_normalized</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu">geom_jitter</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>colour <span class="op">=</span> <span class="va">compName</span>, shape <span class="op">=</span> <span class="va">expType</span><span class="op">)</span>, width <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Normalized mean compound RawData per compound concentration"</span>,
@@ -494,7 +481,7 @@ This step was taken to get the result in relation to the ‘0 value’ which mak
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>R portfolio Daniël Roodzant</strong>" was written by Daniël Roodzant. It was last built on 2022-05-10.</p>
+    <p>"<strong>R portfolio Daniël Roodzant</strong>" was written by Daniël Roodzant. It was last built on 2022-06-08.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

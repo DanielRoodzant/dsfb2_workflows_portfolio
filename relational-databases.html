@@ -70,9 +70,9 @@ Data Source: <br>
 - <a href="https://www.rdocumentation.org/packages/dslabs/versions/0.7.4">dslabs package</a>
 <br><br>
 Datasets used: <br>
-- <a href="./data/data_raw/005_relational_databases/flu_data.csv">Flu data</a> <br>
-- <a href="./data/data_raw/005_relational_databases/dengue_data.csv">Dengue data</a> <br>
-- <a href="./data/data_raw/005_relational_databases/gapminder.csv">gapminder</a>
+- <a href="data_raw/005_relational_databases/flu_data.csv">Flu data</a> <br>
+- <a href="data_raw/005_relational_databases/dengue_data.csv">Dengue data</a> <br>
+- <a href="data_raw/005_relational_databases/gapminder.csv">gapminder</a>
 <br></p>
 </div>
 <div id="cleaning-up" class="section level2" number="6.2">
@@ -85,8 +85,10 @@ The next section will show how this was achieved:
 <br></p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Load the datasets into R datframes</span>
-<span class="va">flu_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">'data/data_raw/005_relational_databases/flu_data.csv'</span>, skip <span class="op">=</span> <span class="fl">11</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">as_tibble</span><span class="op">(</span><span class="op">)</span>
-<span class="va">dengue_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"data/data_raw/005_relational_databases/dengue_data.csv"</span>, skip <span class="op">=</span> <span class="fl">11</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">as_tibble</span><span class="op">(</span><span class="op">)</span>
+<span class="va">flu_data</span> <span class="op">&lt;-</span> <span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"data/data_raw/005_relational_databases/flu_data.csv"</span><span class="op">)</span>, skip <span class="op">=</span> <span class="fl">11</span><span class="op">)</span> <span class="op">%&gt;%</span>
+                              <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span>
+<span class="va">dengue_data</span> <span class="op">&lt;-</span> <span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"data/data_raw/005_relational_databases/dengue_data.csv"</span><span class="op">)</span>, skip <span class="op">=</span> <span class="fl">11</span><span class="op">)</span> <span class="op">%&gt;%</span>
+                                 <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">gapminder</span> <span class="op">&lt;-</span> <span class="fu">dslabs</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/dslabs/man/gapminder.html">gapminder</a></span> <span class="op">%&gt;%</span> <span class="fu">as_tibble</span><span class="op">(</span><span class="op">)</span>
 
 <span class="co"># Tidy the flu_data and dengue_data datasets</span>
@@ -102,16 +104,16 @@ The next section will show how this was achieved:
                       <span class="op">)</span>
 
 <span class="co"># Match the column types of the datasets</span>
-<span class="va">flu_data</span> <span class="op">&lt;-</span> <span class="fu">coltrans</span><span class="op">(</span><span class="va">flu_data</span><span class="op">)</span>
-<span class="va">dengue_data</span> <span class="op">&lt;-</span> <span class="fu">coltrans</span><span class="op">(</span><span class="va">dengue_data</span><span class="op">)</span>
+<span class="co"># The coltrans() function is from the drporthelp package that was created for this portfolio</span>
+<span class="va">flu_data</span> <span class="op">&lt;-</span> <span class="fu">drporthelp</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/drporthelp/man/coltrans.html">coltrans</a></span><span class="op">(</span><span class="va">flu_data</span><span class="op">)</span>
+<span class="va">dengue_data</span> <span class="op">&lt;-</span> <span class="fu">drporthelp</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/drporthelp/man/coltrans.html">coltrans</a></span><span class="op">(</span><span class="va">dengue_data</span><span class="op">)</span>
 
 <span class="va">gapminder</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/transform.html">transform</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/transform.html">transform</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span><span class="op">)</span>
 
 <span class="co"># Filter gapminder to contain only the years present in the flu and dengue dataseets</span>
 <span class="va">gapminder</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2002</span><span class="op">:</span><span class="fl">2015</span><span class="op">)</span>
-         <span class="op">)</span></code></pre></div>
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2002</span><span class="op">:</span><span class="fl">2015</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="using-dbeaver-sql" class="section level2" number="6.3">
 <h2>
@@ -121,31 +123,31 @@ The next section will show how this was achieved:
 <br></p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#Save the data in .csv and .rds files</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.csv</a></span><span class="op">(</span><span class="va">flu_data</span>, <span class="st">"data/data_raw/005_relational_databases/flu_data_tidy.csv"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.csv</a></span><span class="op">(</span><span class="va">dengue_data</span>, <span class="st">"data/data_raw/005_relational_databases/dengue_data_tidy.csv"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.csv</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="st">"data/data_raw/005_relational_databases/gapminder.csv"</span><span class="op">)</span>
-<span class="fu">write_rds</span><span class="op">(</span><span class="va">flu_data</span>, <span class="st">"data/data_raw/005_relational_databases/flu_data_tidy.rds"</span><span class="op">)</span>
-<span class="fu">write_rds</span><span class="op">(</span><span class="va">dengue_data</span>, <span class="st">"data/data_raw/005_relational_databases/dengue_data_tidy.rds"</span><span class="op">)</span>
-<span class="fu">write_rds</span><span class="op">(</span><span class="va">gapminder</span>, <span class="st">"data/data_raw/005_relational_databases/gapminder.rds"</span><span class="op">)</span>
+<span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.csv</a></span><span class="op">(</span><span class="va">flu_data</span>, <span class="st">"data/data_raw/005_relational_databases/flu_data_tidy.csv"</span><span class="op">)</span>
+<span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.csv</a></span><span class="op">(</span><span class="va">dengue_data</span>, <span class="st">"data/data_raw/005_relational_databases/dengue_data_tidy.csv"</span><span class="op">)</span>
+<span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.csv</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="st">"data/data_raw/005_relational_databases/gapminder.csv"</span><span class="op">)</span>
+<span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_rds.html">write_rds</a></span><span class="op">(</span><span class="va">flu_data</span>, <span class="st">"data/data_raw/005_relational_databases/flu_data_tidy.rds"</span><span class="op">)</span>
+<span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_rds.html">write_rds</a></span><span class="op">(</span><span class="va">dengue_data</span>, <span class="st">"data/data_raw/005_relational_databases/dengue_data_tidy.rds"</span><span class="op">)</span>
+<span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_rds.html">write_rds</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="st">"data/data_raw/005_relational_databases/gapminder.rds"</span><span class="op">)</span>
 
-<span class="co">#Upload the data to DBeaver</span>
-<span class="fu">dbWriteTable</span><span class="op">(</span><span class="va">con</span>, <span class="st">"flu_data"</span>,
+<span class="co">#Upload the data to DBeaver, con = the DBeaver connection created using the DBI::dbConnect() function</span>
+<span class="fu">DBI</span><span class="fu">::</span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"flu_data"</span>,
              <span class="va">flu_data</span>,
              overwrite <span class="op">=</span> <span class="cn">TRUE</span>
               <span class="op">)</span>
-<span class="fu">dbWriteTable</span><span class="op">(</span><span class="va">con</span>, <span class="st">"dengue_data"</span>,
+<span class="fu">DBI</span><span class="fu">::</span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"dengue_data"</span>,
              <span class="va">dengue_data</span>,
              overwrite <span class="op">=</span> <span class="cn">TRUE</span>
               <span class="op">)</span>
-<span class="fu">dbWriteTable</span><span class="op">(</span><span class="va">con</span>, <span class="st">"gapminder"</span>,
+<span class="fu">DBI</span><span class="fu">::</span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"gapminder"</span>,
              <span class="va">gapminder</span>,
              overwrite <span class="op">=</span> <span class="cn">TRUE</span>
               <span class="op">)</span></code></pre></div>
 <p><br>
 Uploading files into DBeaver can come in handy to do things like: <br>
-Using the SQL shell to obtain some information about the data in the tables <br><img src="data/data_raw/005_relational_databases/sql_shell.png" style="width:100.0%" alt="SQLshell"><br>
+Using the SQL shell to obtain some information about the data in the tables <br><img src="data_raw/005_relational_databases/sql_shell.png" style="width:100.0%" alt="SQLshell"><br>
 Using the console to get information from the data
-<img src="data/data_raw/005_relational_databases/DBeaver_example.png" style="width:100.0%" alt="DBeaverexample"></p>
+<img src="data_raw/005_relational_databases/DBeaver_example.png" style="width:100.0%" alt="DBeaverexample"></p>
 </div>
 <div id="joining-the-data" class="section level2" number="6.4">
 <h2>
@@ -156,19 +158,20 @@ The Data needs to be joined together to make good informative figures. The next 
 <br></p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Make the data tables joinable</span>
-<span class="va">flu_data</span> <span class="op">&lt;-</span> <span class="fu">datatrans</span><span class="op">(</span><span class="va">flu_data</span><span class="op">)</span>
-<span class="va">dengue_data</span> <span class="op">&lt;-</span> <span class="fu">datatrans</span><span class="op">(</span><span class="va">dengue_data</span><span class="op">)</span>
+<span class="co"># The datatrans() function is from the drporthelp package that was created for this portfolio</span>
+<span class="va">flu_data</span> <span class="op">&lt;-</span> <span class="fu">drporthelp</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/drporthelp/man/datatrans.html">datatrans</a></span><span class="op">(</span><span class="va">flu_data</span><span class="op">)</span>
+<span class="va">dengue_data</span> <span class="op">&lt;-</span> <span class="fu">drporthelp</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/drporthelp/man/datatrans.html">datatrans</a></span><span class="op">(</span><span class="va">dengue_data</span><span class="op">)</span>
 
 <span class="co"># Join the data tables</span>
-<span class="va">flu_dengue_data</span> <span class="op">&lt;-</span> <span class="fu">full_join</span><span class="op">(</span><span class="va">flu_data</span>, 
-                             <span class="va">dengue_data</span>, 
-                             by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"country"</span>, <span class="st">"year"</span><span class="op">)</span>, 
-                             suffix <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"_flu"</span>, <span class="st">"_dengue"</span><span class="op">)</span>
-                             <span class="op">)</span>
-<span class="va">gap_flu_dengue_data</span> <span class="op">&lt;-</span> <span class="fu">inner_join</span><span class="op">(</span><span class="va">flu_dengue_data</span>, 
-                                 <span class="va">gapminder</span>, 
-                                 by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"country"</span>, <span class="st">"year"</span><span class="op">)</span>
-                                 <span class="op">)</span>
+<span class="va">flu_dengue_data</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">full_join</a></span><span class="op">(</span><span class="va">flu_data</span>, 
+                                    <span class="va">dengue_data</span>, 
+                                    by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"country"</span>, <span class="st">"year"</span><span class="op">)</span>, 
+                                    suffix <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"_flu"</span>, <span class="st">"_dengue"</span><span class="op">)</span>
+                                    <span class="op">)</span>
+<span class="va">gap_flu_dengue_data</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">flu_dengue_data</span>, 
+                                         <span class="va">gapminder</span>, 
+                                         by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"country"</span>, <span class="st">"year"</span><span class="op">)</span>
+                                         <span class="op">)</span>
 <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">gap_flu_dengue_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
 <colgroup>
@@ -276,7 +279,8 @@ First by plotting the occurrences of flu and dengue per region to see if they ar
 <br></p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># plot occurrences of flu and dengue per region</span>
-<span class="va">flu_region</span> <span class="op">&lt;-</span> <span class="va">gap_flu_dengue_data</span> <span class="op">%&gt;%</span> <span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
+<span class="va">flu_region</span> <span class="op">&lt;-</span> <span class="va">gap_flu_dengue_data</span> <span class="op">%&gt;%</span> 
+  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu">geom_col</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">region</span>, 
                y <span class="op">=</span> <span class="va">searches_flu</span>,
                fill <span class="op">=</span> <span class="va">region</span><span class="op">)</span>
@@ -290,7 +294,8 @@ First by plotting the occurrences of flu and dengue per region to see if they ar
        y <span class="op">=</span> <span class="st">"Searches"</span>
        <span class="op">)</span>
 
-<span class="va">dengue_region</span> <span class="op">&lt;-</span> <span class="va">gap_flu_dengue_data</span> <span class="op">%&gt;%</span> <span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
+<span class="va">dengue_region</span> <span class="op">&lt;-</span> <span class="va">gap_flu_dengue_data</span> <span class="op">%&gt;%</span> 
+  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu">geom_col</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">region</span>, 
                y <span class="op">=</span> <span class="va">searches_dengue</span>,
                fill <span class="op">=</span> <span class="va">region</span><span class="op">)</span>
@@ -304,7 +309,7 @@ First by plotting the occurrences of flu and dengue per region to see if they ar
        y <span class="op">=</span> <span class="st">"Searches"</span>
        <span class="op">)</span>
 
-<span class="fu">grid.arrange</span><span class="op">(</span><span class="va">flu_region</span>, <span class="va">dengue_region</span>, nrow <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
+<span class="fu">gridExtra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/gridExtra/man/arrangeGrob.html">grid.arrange</a></span><span class="op">(</span><span class="va">flu_region</span>, <span class="va">dengue_region</span>, nrow <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
 <p><img src="_main_files/figure-html/data%20visualisation%201-1.png" width="672"><br>
 The data shows that dengue is most common in South America and South-Eastern Asia. It also has some presence in Central America and Southern Asia but not so much in other regions.
 <br>
@@ -315,8 +320,8 @@ The second graph will portray the occurrences of flu and dengue in the Netherlan
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># plot occurrences of flu and dengue in the Netherlands by year</span>
 <span class="va">flu_region</span> <span class="op">&lt;-</span> <span class="va">gap_flu_dengue_data</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op">==</span> <span class="st">"Netherlands"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op">==</span> <span class="st">"Netherlands"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu">geom_col</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, 
                y <span class="op">=</span> <span class="va">searches_flu</span>,
                fill <span class="op">=</span> <span class="va">year</span><span class="op">)</span>
@@ -331,8 +336,8 @@ The second graph will portray the occurrences of flu and dengue in the Netherlan
        <span class="op">)</span>
 
 <span class="va">dengue_region</span> <span class="op">&lt;-</span> <span class="va">gap_flu_dengue_data</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op">==</span> <span class="st">"Netherlands"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op">==</span> <span class="st">"Netherlands"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu">geom_col</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, 
                y <span class="op">=</span> <span class="va">searches_dengue</span>,
                fill <span class="op">=</span> <span class="va">year</span><span class="op">)</span>
@@ -346,7 +351,7 @@ The second graph will portray the occurrences of flu and dengue in the Netherlan
        y <span class="op">=</span> <span class="st">"Searches"</span>
        <span class="op">)</span>
 
-<span class="fu">grid.arrange</span><span class="op">(</span><span class="va">flu_region</span>, <span class="va">dengue_region</span>, nrow <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
+<span class="fu">gridExtra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/gridExtra/man/arrangeGrob.html">grid.arrange</a></span><span class="op">(</span><span class="va">flu_region</span>, <span class="va">dengue_region</span>, nrow <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
 <p><img src="_main_files/figure-html/data%20visualisation%202-1.png" width="672"><br>
 The flu had its most occurrences in 2009 and 2013 and its least in 2004 and 2010. There is no flu data for 2002 and 2003. This could be because of a lack of data in these years. <br>
 The data shows that Dengue has had no occurrences in the Netherlands between 2002 and 2015.
@@ -355,7 +360,8 @@ The third and last graph will show the worldwide occurrences of flu and dengue o
 <br></p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># plot occurrences of flu and dengue per year</span>
-<span class="va">flu_region</span> <span class="op">&lt;-</span> <span class="va">gap_flu_dengue_data</span> <span class="op">%&gt;%</span> <span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
+<span class="va">flu_region</span> <span class="op">&lt;-</span> <span class="va">gap_flu_dengue_data</span> <span class="op">%&gt;%</span> 
+  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu">geom_col</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, 
                y <span class="op">=</span> <span class="va">searches_flu</span>,
                fill <span class="op">=</span> <span class="va">year</span><span class="op">)</span>
@@ -369,7 +375,8 @@ The third and last graph will show the worldwide occurrences of flu and dengue o
        y <span class="op">=</span> <span class="st">"Searches"</span>
        <span class="op">)</span>
 
-<span class="va">dengue_region</span> <span class="op">&lt;-</span> <span class="va">gap_flu_dengue_data</span> <span class="op">%&gt;%</span> <span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
+<span class="va">dengue_region</span> <span class="op">&lt;-</span> <span class="va">gap_flu_dengue_data</span> <span class="op">%&gt;%</span> 
+  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu">geom_col</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, 
                y <span class="op">=</span> <span class="va">searches_dengue</span>,
                fill <span class="op">=</span> <span class="va">year</span><span class="op">)</span>
@@ -383,7 +390,7 @@ The third and last graph will show the worldwide occurrences of flu and dengue o
        y <span class="op">=</span> <span class="st">"Searches"</span>
        <span class="op">)</span>
 
-<span class="fu">grid.arrange</span><span class="op">(</span><span class="va">flu_region</span>, <span class="va">dengue_region</span>, nrow <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
+<span class="fu">gridExtra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/gridExtra/man/arrangeGrob.html">grid.arrange</a></span><span class="op">(</span><span class="va">flu_region</span>, <span class="va">dengue_region</span>, nrow <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
 <p><img src="_main_files/figure-html/data%20visualisation%203-1.png" width="672"><br>
 The Flu had its most occurrences in 2009, same as in the Netherlands as shown in the previous graph. The least occurrences were in 2002, 2003 and 2004. This could be because of a lack of data in these years. The rest of the datapoints show only minor peaks. <br>
 Dengue had its most occurrences in 2009 and 2010, and the least in 2002, 2003 and 2015. This could also be because of a lack of data in the first, and last few years of the survey.</p>
@@ -419,7 +426,7 @@ Dengue had its most occurrences in 2009 and 2010, and the least in 2002, 2003 an
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>R portfolio Daniël Roodzant</strong>" was written by Daniël Roodzant. It was last built on 2022-05-10.</p>
+    <p>"<strong>R portfolio Daniël Roodzant</strong>" was written by Daniël Roodzant. It was last built on 2022-06-08.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

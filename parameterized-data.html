@@ -64,10 +64,10 @@ Information about the data can be found <a href="https://www.ecdc.europa.eu/site
 <code class="sourceCode R"><span class="co"># Filter the data. The first and last line change the date format so the first column can be specified as such</span>
 <span class="va">lct</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/locales.html">Sys.getlocale</a></span><span class="op">(</span><span class="st">"LC_TIME"</span><span class="op">)</span>; <span class="fu"><a href="https://rdrr.io/r/base/locales.html">Sys.setlocale</a></span><span class="op">(</span><span class="st">"LC_TIME"</span>, <span class="st">"C"</span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span>list <span class="op">=</span> <span class="va">params</span><span class="op">$</span><span class="va">data</span><span class="op">)</span>
-<span class="va">covid_data</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">data</span><span class="op">)</span>
+<span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span>list <span class="op">=</span> <span class="va">params</span><span class="op">$</span><span class="va">data</span><span class="op">)</span>
+<span class="va">covid_data</span> <span class="op">&lt;-</span> <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">data</span><span class="op">)</span>
 <span class="va">covid_data_filtered</span> <span class="op">&lt;-</span> <span class="va">covid_data</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">countriesAndTerritories</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="st">"Netherlands"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">countriesAndTerritories</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="st">"Netherlands"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://rdrr.io/r/base/transform.html">transform</a></span><span class="op">(</span>dateRep <span class="op">=</span> <span class="fu">as_date</span><span class="op">(</span><span class="va">dateRep</span>, format <span class="op">=</span> <span class="st">"%d/%m/%Y"</span><span class="op">)</span>
             <span class="op">)</span>
 
@@ -76,7 +76,7 @@ Information about the data can be found <a href="https://www.ecdc.europa.eu/site
 <span class="fu"><a href="https://rdrr.io/r/base/locales.html">Sys.setlocale</a></span><span class="op">(</span><span class="st">"LC_TIME"</span>, <span class="va">lct</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Make ggplot containing covid cases and deaths in the Netherlands during period Jan 2021 to May 2021</span>
-<span class="va">cases</span> <span class="op">&lt;-</span> <span class="va">covid_data_filtered</span> <span class="op">%&gt;%</span> <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">dateRep</span>, y <span class="op">=</span> <span class="va">cases</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+<span class="va">cases</span> <span class="op">&lt;-</span> <span class="va">covid_data_filtered</span> <span class="op">%&gt;%</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">dateRep</span>, y <span class="op">=</span> <span class="va">cases</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_line</span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"blue"</span>, size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">theme</span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span> <span class="op">+</span>
     <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"COVID-19 cases in the Netherlands"</span>, 
@@ -85,7 +85,7 @@ Information about the data can be found <a href="https://www.ecdc.europa.eu/site
        y <span class="op">=</span> <span class="st">"Cases"</span>
        <span class="op">)</span>
 
-<span class="va">deaths</span> <span class="op">&lt;-</span> <span class="va">covid_data_filtered</span> <span class="op">%&gt;%</span> <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">dateRep</span>, y <span class="op">=</span> <span class="va">deaths</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+<span class="va">deaths</span> <span class="op">&lt;-</span> <span class="va">covid_data_filtered</span> <span class="op">%&gt;%</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">dateRep</span>, y <span class="op">=</span> <span class="va">deaths</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_line</span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"red"</span>, size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">theme</span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span> <span class="op">+</span>
     <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"COVID-19 deaths in the Netherlands"</span>, 
@@ -125,7 +125,7 @@ What stands out in the graphs is that even though the amount of Covid-19 cases s
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>R portfolio Daniël Roodzant</strong>" was written by Daniël Roodzant. It was last built on 2022-05-10.</p>
+    <p>"<strong>R portfolio Daniël Roodzant</strong>" was written by Daniël Roodzant. It was last built on 2022-06-08.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
